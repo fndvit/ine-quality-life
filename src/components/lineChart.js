@@ -2,16 +2,17 @@ import * as Plot from "npm:@observablehq/plot";
 import {resize} from "npm:@observablehq/stdlib";
 
 export function lineChart(data, ccaa, dim, width, height, x, y, {domain, range}, yRange, stroke) {
-  console.log(yRange)
   return resize((width) => 
     Plot.plot({
       width,
       height,
       color: {
         domain,
-        range
+        range,
+        label: "CC.AA.:"
       },
-      y: {domain: yRange},
+      y: {domain: yRange, label: "Valor:"},
+      x: {tickFormat: "", label: "Año:"},
       marks: [
         Plot.lineY(
           data.filter(i => i.dim === dim),
@@ -19,7 +20,15 @@ export function lineChart(data, ccaa, dim, width, height, x, y, {domain, range},
         ),
         Plot.lineY(
           data.filter(i => ccaa.includes(i.ccaa) && i.dim === dim),
-          { stroke: d => d[stroke], strokeWidth: 1.8, curve: "catmull-rom", x: d => d[x], y: d => d[y], tip: true }
+          { stroke: d => d[stroke], strokeWidth: 1.8, curve: "catmull-rom", x: d => d[x], y: d => d[y],
+          tip: {
+            format: {
+              stroke: true,
+              x: (d) => `${d}`,
+              y: true,
+              z: false
+            }
+          } }
         ),
         Plot.lineY(
           data.filter(i => i[stroke] === "Total" && i.dim === dim ),
