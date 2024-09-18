@@ -114,3 +114,10 @@ main h2 {
   border: none;
   box-shadow: 0 0 .5rem rgba(0,0,0,0.1)
 }
+
+
+.center {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;     /* Centers vertically */
+}

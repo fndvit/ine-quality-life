@@ -1,6 +1,6 @@
 import * as d3 from "npm:d3";
 
-export function flowerChart (data, x, y, color, cat, r) {
+export function flowerChart (data, x, y, color, cat, r, name) {
   // Calculate the total number of segments (dimensions)
   const numSegments = data.length;
 
@@ -56,6 +56,19 @@ export function flowerChart (data, x, y, color, cat, r) {
     .join("path")
     .attr("d", arc)
     .attr("fill", (d) => colorScale(d[cat])); // Change color if desired
+
+
+  if (name) {
+    container
+      .selectAll("text")
+      .data(data.filter((d) => d.dim === "dim1"))
+      .join("text")
+      .attr("dy", r+6 )
+      .attr("text-anchor", "middle")
+      .text((d) => name)
+      .attr("text-rendering", "optimizeLegibility")
+      .attr("class", "label");
+  }
 
   return svg.node();
 }

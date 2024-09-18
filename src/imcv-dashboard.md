@@ -8,6 +8,7 @@ style: ../dashboard.css
 import {flowerChart} from "./components/flowerChart.js";
 import {lineChart} from "./components/lineChart.js";
 import {filterLegend} from "./components/filterLegend.js";
+import {tilemap} from "./components/tileMap.js";
 ```
 
 ```js
@@ -53,7 +54,7 @@ const ccaa = Generators.input(ccaaInput);
 
 <div class="grid grid-cols-4">
   <h2 class="grid-colspan-3">TK TK Flores lorem ipsum título</h2>
-  <div class="card grid-colspan-1">
+  <div class="card center grid-colspan-1">
   
   ${
     flowerChart(
@@ -72,7 +73,13 @@ const ccaa = Generators.input(ccaaInput);
   ${yearInput}
   
   </div>
-  <div class="card grid-colspan-3">Tile map</div>
+  <div class="card grid-colspan-3">
+  
+  ${
+    tilemap(ampi, year, ccaaIdDict, dimList, dimColors, 840)
+  }
+  
+  </div>
 </div>
 
 <div class="grid grid-cols-4">
