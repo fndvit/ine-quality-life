@@ -72,6 +72,21 @@ main h2 {
   align-self: start;
 }
 
+.enabled {
+  margin-top:2px;
+  transition: color .3s;
+}
+
+.disabled {
+  color: var(--theme-foreground-faint);
+}
+
+input[type='checkbox'] {
+  width:1rem;
+  height:1rem;
+  margin: 4px 4px 4px 0;
+}
+
 #observablehq-main, #observablehq-header, #observablehq-footer {
   max-width: none;
 }
