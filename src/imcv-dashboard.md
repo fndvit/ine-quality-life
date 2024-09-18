@@ -11,12 +11,12 @@ import {filterLegend} from "./components/filterLegend.js";
 ```
 
 ```js
-const imcv = FileAttachment("data/ampi.json").json();
+const imcv = FileAttachment("data/imcv.json").json();
 ```
 
 ```js
 const dimColors = ["#a87c9f","#e49243","#6ba059","#84b5b2","#c67794","#5877a3","#eccf73","#9bcf85","#f1c2d2"];
-const dimList = [...new Set(imcv.map((d) => d.dim))];
+const dimList = [...new Set(imcv.map((d) => d.dim))].filter((dim) => dim.startsWith("dim"));
 const dimDict = ({
   dim1: "Condiciones materiales de vida",
   dim2: "Trabajo",
@@ -77,9 +77,15 @@ const ccaa = Generators.input(ccaaInput);
 
 <div class="grid grid-cols-4">
   <h2 class="grid-colspan-3">TK TK Tendencias lorem ipsum título</h2>
-  <div class="card grid-colspan-1">Total del índice</div>
+  <div class="card grid-colspan-1">
+     <h3>Evolución del índice</h3>
+      ${lineChart(imcv, ccaa, "index", width, 240, "year", "val", {domain: ccaaList, range: ccaaColors}, lineRange, "ccaa")}
+      
+  </div>
+
   <div class="sticky grid-colspan-1 grid-rowspan-3">
     ${ccaaInput}
+    <p class="notes">Para asegurar la legibilidad de las gráficas, el filtro sólo te permite comparar hasta seis CC.AA. a la vez.</p>
   </div>
   ${
     dimList.map(d => html`

@@ -60,7 +60,6 @@ export function filterLegend (domain, range) {
   return node;
 }
 
-
 function set(input, value) {
   input.value = value;
   input.dispatchEvent(new Event("input", {bubbles: true}));

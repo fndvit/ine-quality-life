@@ -9,10 +9,10 @@ export function lineChart(data, ccaa, dim, width, height, x, y, {domain, range},
       color: {
         domain,
         range,
-        label: "CC.AA.:"
+        label: "CC.AA."
       },
-      y: {domain: yRange, label: "Valor:"},
-      x: {tickFormat: "", label: "Año:"},
+      y: {domain: yRange, label: "Valor"},
+      x: {tickFormat: "", label: "Año"},
       marks: [
         Plot.lineY(
           data.filter(i => i.dim === dim),
@@ -32,7 +32,7 @@ export function lineChart(data, ccaa, dim, width, height, x, y, {domain, range},
         ),
         Plot.lineY(
           data.filter(i => i[stroke] === "Total" && i.dim === dim ),
-          { stroke: d => d[stroke], strokeWidth: 3.6, curve: "catmull-rom", x: d => d[x], y: d => d[y]}
+          { stroke: d => d[stroke], strokeLinecap: "square", strokeDasharray: [3.6,6], strokeWidth: 3, curve: "catmull-rom", x: d => d[x], y: d => d[y]}
         )
       ]
     })
