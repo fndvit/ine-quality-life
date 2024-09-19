@@ -49,21 +49,33 @@ export function flowerChart (data, x, y, color, cat, r, name) {
     .attr("class", "container")
     .attr("transform", `translate(${r},${r})`);
 
+  // Total average as stem
+  const averageValue = d3.mean(data, (d) => d[y]);
+  const averageRadius = yScale(averageValue);
+
+  container
+    .append("line")
+    .attr("x1", 0)
+    .attr("y1", averageRadius)
+    .attr("x2", 0)
+    .attr("y2", r - 5 )
+    .attr("stroke", "#B2C25B")
+    .attr("stroke-width", r / 15);
+
   // Create the petals as path elements
   container
     .selectAll("path")
     .data(data)
     .join("path")
     .attr("d", arc)
-    .attr("fill", (d) => colorScale(d[cat])); // Change color if desired
-
+    .attr("fill", (d) => colorScale(d[cat])); 
 
   if (name) {
     container
       .selectAll("text")
       .data(data.filter((d) => d.dim === "dim1"))
       .join("text")
-      .attr("dy", r+6 )
+      .attr("dy", r + 10 )
       .attr("text-anchor", "middle")
       .text((d) => name)
       .attr("text-rendering", "optimizeLegibility")
