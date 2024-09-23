@@ -52,8 +52,8 @@ main h2 {
   background-color: var(--dashboard-background-alt);;
 }
 
-.card h1, .card h2 { font-weight: 600;}
-.card h3, li, label { font-weight: 500;}
+.card h1, .card h2, .card h3 { font-weight: 600;}
+li, label { font-weight: 500;}
 
 .card h1 { font-size: 1.5rem;}
 .card h2 { 
@@ -72,6 +72,31 @@ main h2 {
   align-self: start;
 }
 
+.enabled {
+  margin-top:2px;
+  transition: color .3s;
+}
+
+.disabled {
+  color: var(--theme-foreground-faint);
+}
+
+input[type='checkbox'] {
+  width:1rem;
+  height:1rem;
+  margin: 4px 4px 4px 0;
+}
+
+[aria-label='tip'] {
+  stroke: var(--theme-foreground-fainter);
+  
+  path {
+    fill-opacity: .9;
+    filter: drop-shadow(0 .1rem .4rem rgba(0,0,0,.18));
+  }
+
+}
+
 #observablehq-main, #observablehq-header, #observablehq-footer {
   max-width: none;
 }
@@ -80,7 +105,7 @@ main h2 {
   font-family: var(--sans-serif);
   font-size: .85rem;
   color: var(--dashboard-foreground-muted);
-  padding-top:2rem;
+  width: 75%;
 }
 
 .legend {
