@@ -80,10 +80,8 @@ const ccaa = Generators.input(ccaaInput);
   <div class="card grid-colspan-1">
      <h3>Evolución del índice</h3>
       ${lineChart(imcv, ccaa, "index", width, 240, "year", "val", {domain: ccaaList, range: ccaaColors}, lineRange, "ccaa")}
-      
   </div>
-
-  <div class="sticky grid-colspan-1 grid-rowspan-3">
+  <div class="sticky grid-colspan-1 grid-rowspan-3 overflow">
     ${ccaaInput}
     <p class="notes">Para asegurar la legibilidad de las gráficas, el filtro sólo te permite comparar hasta seis CC.AA. a la vez.</p>
   </div>
