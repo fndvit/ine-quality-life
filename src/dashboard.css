@@ -48,8 +48,14 @@ main h2 {
   border-top:1px solid var(--theme-foreground-faintest);
 }
 
+.no-border {
+  margin-top: 0;
+  padding-top:0;
+  border-top: none;
+}
+
 .card {
-  background-color: var(--dashboard-background-alt);;
+  background-color: var(--dashboard-background-alt);
 }
 
 .card h1, .card h2, .card h3 { font-weight: 600;}
@@ -64,8 +70,6 @@ li, label { font-weight: 500;}
 .card h3 { font-size: 1rem;}
 .card h4 { font-size: .85rem;}
 
-.grafic { padding-top: 1rem;}
-
 .sticky {
   position: sticky;
   top: 1rem;
@@ -79,6 +83,14 @@ li, label { font-weight: 500;}
 
 .disabled {
   color: var(--theme-foreground-faint);
+}
+
+.red {
+  background-color: red;
+}
+
+.black {
+  background-color: black;
 }
 
 input[type='checkbox'] {
@@ -138,4 +150,16 @@ input[type='checkbox'] {
   background-color: var(--dashboard-background-alt);
   border: none;
   box-shadow: 0 0 .5rem rgba(0,0,0,0.1)
+}
+
+@media only screen and (max-width: 1280px) {
+  .overflow {
+    overflow-y: scroll;
+    height: 150px;
+    background: var(--dashboard-background);
+    z-index:1000;
+    padding: 1rem;
+    margin: -1rem;
+    top: 0;
+  }
 }
