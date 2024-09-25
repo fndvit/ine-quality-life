@@ -33,17 +33,18 @@ export function tilemap(ampi, year, ccaaIdDict, dimList, dimColors, dimDict, __w
   
     // Calculate the size of each cell based on the total width
     const cellWidth = width / maxX;
+    const cellHeight = cellWidth + 20;
   
     return html`<div class="grid-container" style="
       display: grid;
       width: ${width}px;
       grid-template-columns: repeat(${maxX}, ${cellWidth}px); 
-      grid-template-rows: repeat(${maxY}, ${cellWidth}px);">
+      grid-template-rows: repeat(${maxY}, ${cellHeight}px);">
         ${coords.map(
             (coord) =>
                 html`<div class="grid-item" style="
                 width: ${cellWidth}px;
-                height: ${cellWidth}px;
+                height: ${cellHeight}px;
                 grid-column: ${coord.x + 1}; 
                 grid-row: ${coord.y + 1};
                 display: flex;

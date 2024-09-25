@@ -41,7 +41,7 @@ export function flowerChart (data, x, y, color, cat, r, dimDict, name) {
   const svg = d3
     .create("svg")
     .attr("width", r * 2)
-    .attr("height", r * 2);
+    .attr("height", r * 2 + 20);
 
   // Create a group to center the chart
   const container = svg
@@ -122,9 +122,9 @@ export function flowerChart (data, x, y, color, cat, r, dimDict, name) {
       .attr("dy", r + 10 )
       .attr("text-anchor", "middle")
       .text((d) => name)
-      .attr("text-rendering", "optimizeLegibility")
+      .style("letter-spacing", "0.5px")
       .attr("class", "label")
-      .style("font-size", "14px");
+      .style("font-size", "12px");
   }
 
   return svg.node();

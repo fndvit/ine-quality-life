@@ -48,12 +48,18 @@ main h2 {
   border-top:1px solid var(--theme-foreground-faintest);
 }
 
-.card {
-  background-color: var(--dashboard-background-alt);;
+.no-border {
+  margin-top: 0;
+  padding-top:0;
+  border-top: none;
 }
 
-.card h1, .card h2 { font-weight: 600;}
-.card h3, li, label { font-weight: 500;}
+.card {
+  background-color: var(--dashboard-background-alt);
+}
+
+.card h1, .card h2, .card h3 { font-weight: 600;}
+li, label { font-weight: 500;}
 
 .card h1 { font-size: 1.5rem;}
 .card h2 { 
@@ -64,12 +70,43 @@ main h2 {
 .card h3 { font-size: 1rem;}
 .card h4 { font-size: .85rem;}
 
-.grafic { padding-top: 1rem;}
-
 .sticky {
   position: sticky;
   top: 1rem;
   align-self: start;
+}
+
+.enabled {
+  margin-top:2px;
+  transition: color .3s;
+}
+
+.disabled {
+  color: var(--theme-foreground-faint);
+}
+
+.red {
+  background-color: red;
+}
+
+.black {
+  background-color: black;
+}
+
+input[type='checkbox'] {
+  width:1rem;
+  height:1rem;
+  margin: 4px 4px 4px 0;
+}
+
+[aria-label='tip'] {
+  stroke: var(--theme-foreground-fainter);
+  
+  path {
+    fill-opacity: .9;
+    filter: drop-shadow(0 .1rem .4rem rgba(0,0,0,.18));
+  }
+
 }
 
 #observablehq-main, #observablehq-header, #observablehq-footer {
@@ -80,7 +117,7 @@ main h2 {
   font-family: var(--sans-serif);
   font-size: .85rem;
   color: var(--dashboard-foreground-muted);
-  padding-top:2rem;
+  width: 75%;
 }
 
 .legend {
@@ -127,4 +164,16 @@ main h2 {
   max-width: none !important;
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+@media only screen and (max-width: 1280px) {
+  .overflow {
+    overflow-y: scroll;
+    height: 150px;
+    background: var(--dashboard-background);
+    z-index:1000;
+    padding: 1rem;
+    margin: -1rem;
+    top: 0;
+  }
 }
