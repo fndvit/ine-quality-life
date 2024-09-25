@@ -24,14 +24,11 @@ const coords = [
     { id: "ML", x: 3, y: 4 }
   ]
 
-export function tilemap(ampi, year, ccaaIdDict, dimList, dimColors, __width) {
+export function tilemap(ampi, year, ccaaIdDict, dimList, dimColors, dimDict, __width) {
     // Use d3.max to find the maximum x and y
     const maxX = d3.max(coords, (c) => c.x) + 1;
     const maxY = d3.max(coords, (c) => c.y) + 1;
 
-    console.log(maxX,maxY,dimColors,dimList)
-
-  
     const width = __width;
   
     // Calculate the size of each cell based on the total width
@@ -61,6 +58,7 @@ export function tilemap(ampi, year, ccaaIdDict, dimList, dimColors, __width) {
                     { range: dimList, domain: dimColors },
                         "dim",
                     cellWidth / 2,
+                    dimDict,
                     ccaaIdDict[coord.id]
                 )}
                 </div>`

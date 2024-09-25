@@ -120,4 +120,11 @@ main h2 {
   display: flex;
   justify-content: center; /* Centers horizontally */
   align-items: center;     /* Centers vertically */
+
+}
+
+.center p {
+  max-width: none !important;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }

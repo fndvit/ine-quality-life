@@ -1,6 +1,6 @@
 import * as d3 from "npm:d3";
 
-export function flowerChart (data, x, y, color, cat, r, name) {
+export function flowerChart (data, x, y, color, cat, r, dimDict, name) {
   // Calculate the total number of segments (dimensions)
   const numSegments = data.length;
 
@@ -49,10 +49,28 @@ export function flowerChart (data, x, y, color, cat, r, name) {
     .attr("class", "container")
     .attr("transform", `translate(${r},${r})`);
 
+
+
+  // Create the tooltip div and hide it by default
+  const tooltip = d3.select("body")
+  .append("div")
+  .attr("class", "card")
+  .style("position", "absolute")
+  .style("background", "#f2f2f2")
+  .style("border", "2px solid #767676")
+  .style("padding", "5px 10px")
+  .style("border-radius", "2px")
+  .style("font-size", "10px")
+  .style("letter-spacing", "0.5px")
+  .style("drop-shadow", "0 3px 4px rgba(0,0,0,0.2))")
+  .style("pointer-events", "none")
+  .style("display", "none");
+
+
   // Total average as stem
   const averageValue = d3.mean(data, (d) => d[y]);
   const averageRadius = yScale(averageValue);
-
+  
   container
     .append("line")
     .attr("x1", 0)
@@ -60,7 +78,20 @@ export function flowerChart (data, x, y, color, cat, r, name) {
     .attr("x2", 0)
     .attr("y2", r - 5 )
     .attr("stroke", "#B2C25B")
-    .attr("stroke-width", r / 15);
+    .attr("stroke-width", r / 15)
+    .on("mouseover", function (event, d) {
+      tooltip
+        .style("display", "block")
+        .html(`<strong>categoria</strong> Total <br><strong>valor</strong> ${averageValue.toFixed(2)}`);
+    })
+    .on("mousemove", function (event) {
+      tooltip
+        .style("left", (event.pageX + 10) + "px")
+        .style("top", (event.pageY - 20) + "px");
+    })
+    .on("mouseout", function () {
+      tooltip.style("display", "none");
+    });
 
   // Create the petals as path elements
   container
@@ -68,7 +99,20 @@ export function flowerChart (data, x, y, color, cat, r, name) {
     .data(data)
     .join("path")
     .attr("d", arc)
-    .attr("fill", (d) => colorScale(d[cat])); 
+    .attr("fill", (d) => colorScale(d[cat]))
+    .on("mouseover", function (event, d) {
+      tooltip
+        .style("display", "block")
+        .html(`<strong>categoria</strong> ${dimDict[d[cat]]}<br><strong>valor</strong> ${d[y]}`);
+    })
+    .on("mousemove", function (event) {
+      tooltip
+        .style("left", (event.pageX + 10) + "px")
+        .style("top", (event.pageY - 20) + "px");
+    })
+    .on("mouseout", function () {
+      tooltip.style("display", "none");
+    });
 
   if (name) {
     container
@@ -79,7 +123,8 @@ export function flowerChart (data, x, y, color, cat, r, name) {
       .attr("text-anchor", "middle")
       .text((d) => name)
       .attr("text-rendering", "optimizeLegibility")
-      .attr("class", "label");
+      .attr("class", "label")
+      .style("font-size", "14px");
   }
 
   return svg.node();

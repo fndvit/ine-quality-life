@@ -63,7 +63,8 @@ const ccaa = Generators.input(ccaaInput);
       "val",
       { range: dimList, domain: dimColors },
       "dim",
-      width / 12
+      width / 12,
+      dimDict
     )
   }
   
@@ -76,7 +77,7 @@ const ccaa = Generators.input(ccaaInput);
   <div class="card center grid-colspan-3">
   
   ${
-    tilemap(ampi, year, ccaaIdDict, dimList, dimColors, 840)
+    tilemap(ampi, year, ccaaIdDict, dimList, dimColors, dimDict, width/2)
   }
   
   </div>
