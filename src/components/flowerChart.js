@@ -49,6 +49,10 @@ export function flowerChart (data, x, y, color, cat, r, dimDict, name) {
     .attr("class", "container")
     .attr("transform", `translate(${r},${r})`);
 
+  const petalsGroup = container
+    .append("g")
+    .attr("class", "petals-group")
+    .attr("transform", "rotate(30)");
 
 
   // Create the tooltip div and hide it by default
@@ -74,9 +78,9 @@ export function flowerChart (data, x, y, color, cat, r, dimDict, name) {
   container
     .append("line")
     .attr("x1", 0)
-    .attr("y1", averageRadius)
+    .attr("y1", r - 5) // r  - averageRadius/2
     .attr("x2", 0)
-    .attr("y2", r - 5 )
+    .attr("y2", r - averageRadius/2 )
     .attr("stroke", "#B2C25B")
     .attr("stroke-width", r / 15)
     .on("mouseover", function (event, d) {
@@ -94,7 +98,7 @@ export function flowerChart (data, x, y, color, cat, r, dimDict, name) {
     });
 
   // Create the petals as path elements
-  container
+  petalsGroup
     .selectAll("path")
     .data(data)
     .join("path")

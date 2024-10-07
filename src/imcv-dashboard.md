@@ -73,7 +73,7 @@ const ccaa = Generators.input(ccaaInput);
   </div>
   <div class="card center">
     ${
-      tilemap(imcv, year, ccaaIdDict, dimList, dimColors, dimDict, width > 1200 ? width/3*2 : width - 100)
+      tilemap(imcv, year, ccaaIdDict, dimList, dimColors, dimDict, width > 1200 ? width/2 : width - 100)
     }
   </div>
 </div>
