@@ -1,10 +1,30 @@
 import * as d3 from "npm:d3";
-import {dimColors, dimDict, dimList} from "../data/consts.js";
+import {dimColors, dimDict, dimList, ccaaNameDict} from "../data/consts.js";
 
+function showTooltip(elem, tooltip, category, value) {
+  elem
+  .style("stroke", "black")
+  .style("stroke-width", 1.5);
+  tooltip
+  .style("display", "block")
+  .html(`<strong>categoria</strong> ${category}<br><strong>valor</strong> ${value}`);
+}
 
-export function flowerChart(data, selectedCCAA, y, cat, r) {
-  
-  const dataCCAA = data.filter((o) => o.ccaa === selectedCCAA)
+function hideTooltip(elem, tooltip){
+  elem.style("stroke", "none");
+  tooltip.style("display", "none");
+}
+
+function moveTooltip(tooltip, event){
+  tooltip
+  .style("left", (event.pageX + 10) + "px")
+  .style("top", (event.pageY - 20) + "px");
+}
+
+export function flowerChart(data, selectedCCAA, year, y, cat, r) {
+  const dataCCAA = data.filter((o) => o.ccaa === selectedCCAA && o.dim !== "index" && o.year === year);
+  const indexValue = data.filter((o) => o.ccaa === selectedCCAA && o.dim === "index" && o.year === year )[0].val;
+
   const numSegments = dataCCAA.length;
   
   const slicePadding = 12;
@@ -18,7 +38,7 @@ export function flowerChart(data, selectedCCAA, y, cat, r) {
   // Define the arc
   const arc = d3
     .arc()
-    .innerRadius(r / 20)
+    .innerRadius(r / 15)
     .outerRadius((d) => yScale(d[y])) // Radial length based on value
     .startAngle(
       (d, i) => ((i - 0.5) / numSegments) * 2 * Math.PI + slicePadding / d[y]
@@ -28,6 +48,8 @@ export function flowerChart(data, selectedCCAA, y, cat, r) {
         ((i - 0.5 + 1) / numSegments) * 2 * Math.PI - slicePadding / d[y]
     ) // Angle end
     .cornerRadius(r);
+
+  const baseY = r - yScale(indexValue) - 20;
 
   const svg = d3
     .create("svg")
@@ -39,54 +61,31 @@ export function flowerChart(data, selectedCCAA, y, cat, r) {
     .attr("class", "container")
     .attr("transform", `translate(${r},${r})`);
 
-  const petalsGroup = container
-    .append("g")
-    .attr("class", "petals-group")
-    .attr("transform", "rotate(30)"); //rotate because total view is better
-
-
   const tooltip = d3.select("body")
     .append("div")
     .attr("class", "card")
+    .attr("aria-label","tip")
     .style("position", "absolute")
-    .style("background", "#f2f2f2")
-    .style("border", "2px solid #767676")
     .style("padding", "5px 10px")
-    .style("border-radius", "2px")
-    .style("font-size", "10px")
-    .style("letter-spacing", "0.5px")
-    .style("drop-shadow", "0 3px 4px rgba(0,0,0,0.2))")
-    .style("pointer-events", "none")
-    .style("display", "none");
+    .style("pointer-events", "none");
 
-
-  // Total average as stem
-  const averageValue = d3.mean(dataCCAA, (d) => d[y]);
-  const averageRadius = yScale(averageValue);
-  
+  // Steam
   container
     .append("line")
     .attr("x1", 0)
-    .attr("y1", r - 5) // r  - averageRadius/2
+    .attr("y1", r - 10) 
     .attr("x2", 0)
-    .attr("y2", r - averageRadius/2 )
+    .attr("y2", baseY)
     .attr("stroke", "#B2C25B")
-    .attr("stroke-width", r / 15)
-    .on("mouseover", function (event, d) {
-      tooltip
-        .style("display", "block")
-        .html(`<strong>categoria</strong> Total <br><strong>valor</strong> ${averageValue.toFixed(2)}`);
-    })
-    .on("mousemove", function (event) {
-      tooltip
-        .style("left", (event.pageX + 10) + "px")
-        .style("top", (event.pageY - 20) + "px");
-    })
-    .on("mouseout", function () {
-      tooltip.style("display", "none");
-    });
+    .attr("stroke-width", r / 20)
+    .attr("stroke-linecap", "round");
 
-  // Create the petals as path elements
+  // Create the petals
+  const petalsGroup = container
+  .append("g")
+  .attr("class", "petals-group")
+  .attr("transform", `translate(0, ${baseY})`);
+
   petalsGroup
     .selectAll("path")
     .data(dataCCAA)
@@ -94,30 +93,45 @@ export function flowerChart(data, selectedCCAA, y, cat, r) {
     .attr("d", arc)
     .attr("fill", (d) => colorScale(d[cat]))
     .on("mouseover", function (event, d) {
-      tooltip
-        .style("display", "block")
-        .html(`<strong>categoria</strong> ${dimDict[d[cat]]}<br><strong>valor</strong> ${d[y]}`);
+      showTooltip(d3.select(this),tooltip,dimDict[d[cat]],d[y])
     })
     .on("mousemove", function (event) {
-      tooltip
-        .style("left", (event.pageX + 10) + "px")
-        .style("top", (event.pageY - 20) + "px");
+      moveTooltip(tooltip,event);
     })
     .on("mouseout", function () {
-      tooltip.style("display", "none");
+      hideTooltip(d3.select(this),tooltip);
     });
 
-  //Place name at bottom
+
+  //Place name and index 
   container
-    .selectAll("text")
-    .data(dataCCAA.filter((d) => d.dim === "dim1"))
-    .join("text")
-    .attr("dy", r + 10 )
-    .attr("text-anchor", "middle")
-    .text((d) => selectedCCAA)
-    .style("letter-spacing", "0.5px")
-    .attr("class", "label")
-    .style("font-size", "12px");
+    .append("text")
+    .attr("x", 0) 
+    .attr("y", baseY + 5) // Position slightly below the line
+    .attr("text-anchor", "middle") 
+    .attr("class", "notes")
+    .style("font-weight","bold")
+    .attr("stroke", "#FFF") 
+    .attr("stroke-width", 3)
+    .text(indexValue); 
+
+  container
+    .append("text")
+    .attr("x", 0) 
+    .attr("y", baseY + 5) // Position slightly below the line
+    .attr("text-anchor", "middle") 
+    .attr("class", "notes")
+    .style("font-weight","bold")
+    .text(indexValue); 
+
+  container
+    .append("text")
+    .attr("x", 0) 
+    .attr("y", r + 15) // Position slightly below the line
+    .attr("text-anchor", "middle") 
+    .text(ccaaNameDict[selectedCCAA]); 
+
+
 
   return svg.node();
 }

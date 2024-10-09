@@ -50,10 +50,9 @@ export function tilemap(data, year, width) {
                 justify-content: center;
                 align-items: center;">
                 ${flowerChart(
-                    data.filter(
-                    (d) => d.year === year 
-                    ),
+                    data,
                     ccaaIdDict[coord.id],
+                    year,
                     "val",
                     "dim",
                     cellWidth / 2,

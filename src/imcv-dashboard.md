@@ -11,9 +11,8 @@ import {flowerChart} from "./components/flowerChart.js";
 import {lineChart} from "./components/lineChart.js";
 import {tilemap} from "./components/tileMap.js";
 
+//if not here not working
 const data = await FileAttachment("data/imcv.json").json();
-
-const lineRange = d3.extent(imcv, d => d.val);
 
 const yearInput = Inputs.range(d3.extent(imcv.map((d) => d.year)), {
     label: "Selecciona el año",
@@ -35,22 +34,24 @@ const ccaa = Generators.input(ccaaInput);
   <div class="menu sticky"> ${yearInput} </div>
   
   <div class="card center chart"> 
-    ${flowerChart(
-      imcv.filter((d) => d.year === year && d.ccaa === "Total"),
-      "Total",
-      "val", 
-      "dim",
-      width / 12
-    )}
+    ${
+      flowerChart(
+        imcv,
+        "Total",
+        year,
+        "val", 
+        "dim",
+        width > 600 ? width / 12 : width / 6)
+      }
   </div>
   
   ${yearInput}
   
   </div>
-  <div class="card center">
-    ${
-      tilemap(imcv, year, width > 1200 ? width/2 : width - 100)
-    }
+  <div class="card center" style="overflow-x: auto;">
+      ${
+        tilemap(imcv, year, width > 1200 ? width/2 : (width > 500 ? width - 100 : 500))
+      }
   </div>
 </div>
 
@@ -63,7 +64,7 @@ const ccaa = Generators.input(ccaaInput);
 
   <div class="card chart">
      <h3>Evolución del índice</h3>
-      ${lineChart(imcv, ccaa, "index", width, 240, "year", "val", lineRange, "ccaa")}
+      ${lineChart(imcv, ccaa, "index", width, 240, "year", "val", "ccaa")}
   </div>
 
   <div class="map">
@@ -71,7 +72,7 @@ const ccaa = Generators.input(ccaaInput);
       dimList.map(d => html`
       <div class="card">
         <h3>${dimDict[d]}</h3>
-        ${lineChart(imcv, ccaa, d, width, 240, "year", "val", lineRange, "ccaa")}
+        ${lineChart(imcv, ccaa, d, width, 240, "year", "val", "ccaa")}
       </div>
       `)
     }
