@@ -1,11 +1,13 @@
 import * as d3 from "npm:d3";
+import {dimColors, dimDict, dimList} from "../data/consts.js";
 
-export function flowerChart (data, x, y, color, cat, r, dimDict, name) {
+
+export function flowerChart(data, x, y, cat, r, name) {
   // Calculate the total number of segments (dimensions)
   const numSegments = data.length;
 
   // Define color scale
-  const colorScale = d3.scaleOrdinal(color.range, color.domain);
+  const colorScale = d3.scaleOrdinal(dimList, dimColors);
 
   // Define padding between slices in radians (e.g., 0.02 radians)
   const slicePadding = 12;

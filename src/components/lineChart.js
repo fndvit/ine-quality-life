@@ -1,14 +1,15 @@
 import * as Plot from "npm:@observablehq/plot";
 import {resize} from "npm:@observablehq/stdlib";
+import {ccaaList, ccaaColors} from "../data/consts.js";
 
-export function lineChart(data, ccaa, dim, width, height, x, y, {domain, range}, yRange, stroke) {
+export function lineChart(data, ccaa, dim, width, height, x, y, yRange, stroke) {
   return resize((width) => 
     Plot.plot({
       width,
       height,
       color: {
-        domain,
-        range,
+        domain: ccaaList,
+        range: ccaaColors,
         label: "CC.AA."
       },
       y: {domain: yRange, label: "Valor"},

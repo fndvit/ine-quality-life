@@ -1,6 +1,7 @@
 import * as d3 from "npm:d3";
 import {html} from "npm:htl";
 import {flowerChart} from "./flowerChart.js";
+import {ccaaIdDict, dimList} from "../data/consts.js";
 
 const coords = [
     { id: "GA", x: 0, y: 0 },
@@ -23,8 +24,8 @@ const coords = [
     { id: "CE", x: 2, y: 4 },
     { id: "ML", x: 3, y: 4 }
   ]
-
-export function tilemap(ampi, year, ccaaIdDict, dimList, dimColors, dimDict, __width) {
+  
+export function tilemap(ampi, year, __width) {
     // Use d3.max to find the maximum x and y
     const maxX = d3.max(coords, (c) => c.x) + 1;
     const maxY = d3.max(coords, (c) => c.y) + 1;
@@ -56,10 +57,8 @@ export function tilemap(ampi, year, ccaaIdDict, dimList, dimColors, dimDict, __w
                     ),
                     "ccaa",
                     "val",
-                    { range: dimList, domain: dimColors },
-                        "dim",
+                    "dim",
                     cellWidth / 2,
-                    dimDict,
                     ccaaIdDict[coord.id]
                 )}
                 </div>`
