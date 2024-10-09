@@ -11,6 +11,8 @@ import {flowerChart} from "./components/flowerChart.js";
 import {lineChart} from "./components/lineChart.js";
 import {tilemap} from "./components/tileMap.js";
 
+const data = await FileAttachment("data/imcv.json").json();
+
 const lineRange = d3.extent(imcv, d => d.val);
 
 const yearInput = Inputs.range(d3.extent(imcv.map((d) => d.year)), {
@@ -35,7 +37,7 @@ const ccaa = Generators.input(ccaaInput);
   <div class="card center chart"> 
     ${flowerChart(
       imcv.filter((d) => d.year === year && d.ccaa === "Total"),
-      "ccaa",
+      "Total",
       "val", 
       "dim",
       width / 12

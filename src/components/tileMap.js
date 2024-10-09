@@ -1,7 +1,7 @@
 import * as d3 from "npm:d3";
 import {html} from "npm:htl";
 import {flowerChart} from "./flowerChart.js";
-import {ccaaIdDict, dimList} from "../data/consts.js";
+import {ccaaIdDict} from "../data/consts.js";
 
 const coords = [
     { id: "GA", x: 0, y: 0 },
@@ -25,12 +25,10 @@ const coords = [
     { id: "ML", x: 3, y: 4 }
   ]
   
-export function tilemap(ampi, year, __width) {
+export function tilemap(data, year, width) {
     // Use d3.max to find the maximum x and y
     const maxX = d3.max(coords, (c) => c.x) + 1;
     const maxY = d3.max(coords, (c) => c.y) + 1;
-
-    const width = __width;
   
     // Calculate the size of each cell based on the total width
     const cellWidth = width / maxX;
@@ -52,14 +50,13 @@ export function tilemap(ampi, year, __width) {
                 justify-content: center;
                 align-items: center;">
                 ${flowerChart(
-                    ampi.filter(
-                    (d) => d.year === year && d.ccaa === ccaaIdDict[coord.id]
+                    data.filter(
+                    (d) => d.year === year 
                     ),
-                    "ccaa",
+                    ccaaIdDict[coord.id],
                     "val",
                     "dim",
                     cellWidth / 2,
-                    ccaaIdDict[coord.id]
                 )}
                 </div>`
         )}

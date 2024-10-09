@@ -2,28 +2,18 @@ import * as d3 from "npm:d3";
 import {dimColors, dimDict, dimList} from "../data/consts.js";
 
 
-export function flowerChart(data, x, y, cat, r, name) {
-  // Calculate the total number of segments (dimensions)
-  const numSegments = data.length;
-
-  // Define color scale
-  const colorScale = d3.scaleOrdinal(dimList, dimColors);
-
-  // Define padding between slices in radians (e.g., 0.02 radians)
+export function flowerChart(data, selectedCCAA, y, cat, r) {
+  
+  const dataCCAA = data.filter((o) => o.ccaa === selectedCCAA)
+  const numSegments = dataCCAA.length;
+  
   const slicePadding = 12;
 
-  // Create a scale for the angular positioning (dimensions)
-  const xScale = d3
-    .scaleBand()
-    .domain(data.map((d) => d[x])) // Map each category for angular placement
-    .range([0, 2 * Math.PI]) // Full circle range
-    .align(0); // Align segments correctly
-
-  // Create a scale for the radial positioning (values)
+  const colorScale = d3.scaleOrdinal(dimList, dimColors);
   const yScale = d3
     .scaleLinear()
-    .domain(d3.extent(data.map((d) => d[y]))) // Adjust to your data's value range
-    .range([r / 3, r]); // Map to radius
+    .domain(d3.extent(data.map((d) => d[y]))) 
+    .range([r / 3, r]); 
 
   // Define the arc
   const arc = d3
@@ -39,13 +29,11 @@ export function flowerChart(data, x, y, cat, r, name) {
     ) // Angle end
     .cornerRadius(r);
 
-  // Create the svg
   const svg = d3
     .create("svg")
     .attr("width", r * 2)
     .attr("height", r * 2 + 20);
 
-  // Create a group to center the chart
   const container = svg
     .append("g")
     .attr("class", "container")
@@ -54,27 +42,26 @@ export function flowerChart(data, x, y, cat, r, name) {
   const petalsGroup = container
     .append("g")
     .attr("class", "petals-group")
-    .attr("transform", "rotate(30)");
+    .attr("transform", "rotate(30)"); //rotate because total view is better
 
 
-  // Create the tooltip div and hide it by default
   const tooltip = d3.select("body")
-  .append("div")
-  .attr("class", "card")
-  .style("position", "absolute")
-  .style("background", "#f2f2f2")
-  .style("border", "2px solid #767676")
-  .style("padding", "5px 10px")
-  .style("border-radius", "2px")
-  .style("font-size", "10px")
-  .style("letter-spacing", "0.5px")
-  .style("drop-shadow", "0 3px 4px rgba(0,0,0,0.2))")
-  .style("pointer-events", "none")
-  .style("display", "none");
+    .append("div")
+    .attr("class", "card")
+    .style("position", "absolute")
+    .style("background", "#f2f2f2")
+    .style("border", "2px solid #767676")
+    .style("padding", "5px 10px")
+    .style("border-radius", "2px")
+    .style("font-size", "10px")
+    .style("letter-spacing", "0.5px")
+    .style("drop-shadow", "0 3px 4px rgba(0,0,0,0.2))")
+    .style("pointer-events", "none")
+    .style("display", "none");
 
 
   // Total average as stem
-  const averageValue = d3.mean(data, (d) => d[y]);
+  const averageValue = d3.mean(dataCCAA, (d) => d[y]);
   const averageRadius = yScale(averageValue);
   
   container
@@ -102,7 +89,7 @@ export function flowerChart(data, x, y, cat, r, name) {
   // Create the petals as path elements
   petalsGroup
     .selectAll("path")
-    .data(data)
+    .data(dataCCAA)
     .join("path")
     .attr("d", arc)
     .attr("fill", (d) => colorScale(d[cat]))
@@ -120,18 +107,17 @@ export function flowerChart(data, x, y, cat, r, name) {
       tooltip.style("display", "none");
     });
 
-  if (name) {
-    container
-      .selectAll("text")
-      .data(data.filter((d) => d.dim === "dim1"))
-      .join("text")
-      .attr("dy", r + 10 )
-      .attr("text-anchor", "middle")
-      .text((d) => name)
-      .style("letter-spacing", "0.5px")
-      .attr("class", "label")
-      .style("font-size", "12px");
-  }
+  //Place name at bottom
+  container
+    .selectAll("text")
+    .data(dataCCAA.filter((d) => d.dim === "dim1"))
+    .join("text")
+    .attr("dy", r + 10 )
+    .attr("text-anchor", "middle")
+    .text((d) => selectedCCAA)
+    .style("letter-spacing", "0.5px")
+    .attr("class", "label")
+    .style("font-size", "12px");
 
   return svg.node();
 }
