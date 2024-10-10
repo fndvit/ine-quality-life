@@ -21,7 +21,7 @@ const yearInput = Inputs.range(d3.extent(imcv.map((d) => d.year)), {
   });
 const year = Generators.input(yearInput);
 
-const ccaaInput = filterLegend(ccaaList.filter(d => d !== "Total"), ccaaColors.filter(d =>  d !== "#909090"))
+const ccaaInput = filterLegend(ccaaList.filter(d => d !== "Total"), ccaaColors.filter(d =>  d !== "#594e58"))
 const ccaa = Generators.input(ccaaInput);
 
 ```
