@@ -152,6 +152,20 @@ input[type='checkbox'] {
   box-shadow: 0 0 .5rem rgba(0,0,0,0.1)
 }
 
+
+.center {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;     /* Centers vertically */
+
+}
+
+.center p {
+  max-width: none !important;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 @media only screen and (max-width: 1280px) {
   .overflow {
     overflow-y: scroll;
