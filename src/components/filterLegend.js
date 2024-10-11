@@ -1,4 +1,5 @@
 import {html} from "npm:htl";
+import {ccaaNameDict} from "../data/consts.js";
 
 export function filterLegend (domain, range) {
   const value = new Map(domain.map((d) => [d, false]));
@@ -49,7 +50,7 @@ export function filterLegend (domain, range) {
         <input type="checkbox" id="${d}" name="${d}" style="accent-color: ${range[i]}"
         checked=${value.get(d)} 
         oninput=${oninput}>
-        <label for="${d}" class="enabled">${d}</label>
+        <label for="${d}" class="enabled">${ccaaNameDict[d]}</label>
       </div>`
     )}
   </div>`;
