@@ -89,7 +89,7 @@ TK TK
     <h2><a href="imcv-dashboard">Panel del índice multidimensional de calidad de vida (IMCV)</a></h2>
   </div>
   <div class="card">
-    <h2><a href=""><em>Making off</em> y otros enredos</a></h2>
+    <h2><a href="making-of"><em>Making-of</em> y otros enredos</a></h2>
   </div>
   <div class="card">
     <h2><a href="">Los datos, en bruto</a></h2>
