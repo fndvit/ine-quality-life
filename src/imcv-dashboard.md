@@ -21,7 +21,7 @@ const yearInput = Inputs.range(d3.extent(imcv.map((d) => d.year)), {
   });
 const year = Generators.input(yearInput);
 
-const ccaaInput = filterLegend(ccaaList.filter(d => d !== "Total"), ccaaColors.filter(d =>  d !== "#594e58"))
+const ccaaInput = filterLegend(ccaaList.filter(d => d !== "Total"), ccaaColors.filter(d =>  d !== "#797974"))
 const ccaa = Generators.input(ccaaInput);
 
 ```
@@ -50,7 +50,7 @@ const ccaa = Generators.input(ccaaInput);
   </div>
   <div class="card center" style="overflow-x: auto;">
       ${
-        tilemap(imcv, year, width > 1200 ? width/2 : (width > 500 ? width - 100 : 500))
+        tilemap(imcv, year, width > 1200 ? width*.65 : width )
       }
   </div>
 </div>
