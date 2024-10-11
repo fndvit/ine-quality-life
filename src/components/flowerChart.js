@@ -7,7 +7,7 @@ function showTooltip(elem, tooltip, category, value) {
   .style("stroke-width", 1.5);
   tooltip
   .style("display", "block")
-  .html(`<strong>categoria</strong> ${category}<br><strong>valor</strong> ${value}`);
+  .html(`${category}<br/><span class="big-number">${value}</span>`);
 }
 
 function hideTooltip(elem, tooltip){
@@ -63,7 +63,7 @@ export function flowerChart(data, selectedCCAA, year, y, cat, r) {
 
   const tooltip = d3.select("body")
     .append("div")
-    .attr("class", "card")
+    .attr("class", "tooltip")
     .attr("aria-label","tip")
     .style("position", "absolute")
     .style("padding", "5px 10px")
@@ -130,8 +130,6 @@ export function flowerChart(data, selectedCCAA, year, y, cat, r) {
     .attr("y", r + 15) // Position slightly below the line
     .attr("text-anchor", "middle") 
     .text(ccaaNameDict[selectedCCAA]); 
-
-
 
   return svg.node();
 }
