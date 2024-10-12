@@ -70,6 +70,12 @@ li, label { font-weight: 500;}
 .card h3 { font-size: 1rem;}
 .card h4 { font-size: .85rem;}
 
+.header p {
+  padding-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.75rem;
+}
+
 .sticky {
   position: sticky;
   top: 1rem;

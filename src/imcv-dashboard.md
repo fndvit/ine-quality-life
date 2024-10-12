@@ -5,7 +5,7 @@ style: ../dashboard.css
 ---
 
 ```js
-import {data as imcv, ccaaList, ccaaColors, dimList, dimDict} from "./data/consts.js";
+import {data as imcv, ccaaList, ccaaColors, dimList, dimDict, yearTexts} from "./data/consts.js";
 import {filterLegend} from "./components/filterLegend.js";
 import {flowerChart} from "./components/flowerChart.js";
 import {lineChart} from "./components/lineChart.js";
@@ -30,7 +30,10 @@ const ccaa = Generators.input(ccaaInput);
 ## TK TK subtítulo
 
 <div class="grid grid-charts">
-  <h2 class="header">TK TK Flores lorem ipsum título</h2> 
+  <div class="header">
+    <h2>¿Qué comunidades tienen un índice más elevado?</h2>
+    <p>${yearTexts[year]}</p>
+  </div>
   <div class="menu sticky"> ${yearInput} </div>
   
   <div class="card center chart"> 
@@ -56,7 +59,11 @@ const ccaa = Generators.input(ccaaInput);
 </div>
 
 <div class="grid grid-charts">
-  <h2 class="header">TK TK Tendencias lorem ipsum título</h2>
+  <div class="header">
+    <h2>¿Cómo han evolucionado las dimensiones del índice?</h2>
+    <p>En estos gráficos puedes explorar la tendencia de cada comunidad autónoma y cada dimensión. La única dimensión que crece de manera relativamente consistente es <strong>Educación</strong>. Las más cambiantes son <strong>Trabajo —especialmente en momentos de crisis, Salud —muy variable de año en año, y Condiciones materiales de vida</strong>, <strong>Seguridad física y personal</strong> y <strong>Entorno y medioambiente</strong> con variaciones significativas entre años y entre comunidades autónomas. En contraste, <strong>Gobernanza y derechos básicos, Ocio y relaciones sociales</strong> y <strong>Experiencia general de la vida</strong>  se mantienen con fluctuaciones mínimas.</p>
+  </div>
+  
   <div class="sticky menu menu-tendencias">
     ${ccaaInput}
     <p class="notes">Para asegurar la legibilidad de las gráficas, el filtro sólo te permite comparar hasta seis CC.AA. a la vez.</p>
