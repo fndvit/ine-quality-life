@@ -23,16 +23,14 @@ const year = Generators.input(yearInput);
 
 const ccaaInput = filterLegend(ccaaList.filter(d => d !== "Total"), ccaaColors.filter(d =>  d !== "#797974"))
 const ccaa = Generators.input(ccaaInput);
-
 ```
 
-# TK TK Titular del Índice
-## TK TK subtítulo
+# La calidad de vida en España
 
 <div class="grid grid-charts">
   <div class="header">
-    <h2>¿Qué comunidades tienen un índice más elevado?</h2>
-    <p>${yearTexts[year]}</p>
+    <h2>¿Cuáles son las comunidades autónomas con mejor calidad de vida?</h2>
+    <p>${yearTexts[year]} A continuación puedes explorar los valores de las dimensiones para cada comunidad autónoma para el año seleccionado.</p>
   </div>
   <div class="menu sticky"> ${yearInput} </div>
   
@@ -61,7 +59,7 @@ const ccaa = Generators.input(ccaaInput);
 <div class="grid grid-charts">
   <div class="header">
     <h2>¿Cómo han evolucionado las dimensiones del índice?</h2>
-    <p>En estos gráficos puedes explorar la tendencia de cada comunidad autónoma y cada dimensión. La única dimensión que crece de manera relativamente consistente es <strong>Educación</strong>. Las más cambiantes son <strong>Trabajo —especialmente en momentos de crisis, Salud —muy variable de año en año, y Condiciones materiales de vida</strong>, <strong>Seguridad física y personal</strong> y <strong>Entorno y medioambiente</strong> con variaciones significativas entre años y entre comunidades autónomas. En contraste, <strong>Gobernanza y derechos básicos, Ocio y relaciones sociales</strong> y <strong>Experiencia general de la vida</strong>  se mantienen con fluctuaciones mínimas.</p>
+    <p>En estos gráficos puedes explorar la tendencia de cada comunidad autónoma y cada dimensión. La única dimensión que crece de manera relativamente consistente es Educación. Las más cambiantes son Trabajo —especialmente en momentos de crisis, Salud —muy variable de año en año, y Condiciones materiales de vida, Seguridad física y personal y Entorno y medioambiente con variaciones significativas entre años y entre comunidades autónomas. En contraste, Gobernanza y derechos básicos, Ocio y relaciones sociales< y Experiencia general de la vida se mantienen con fluctuaciones mínimas.</p>
   </div>
   
   <div class="sticky menu menu-tendencias">
@@ -88,12 +86,12 @@ const ccaa = Generators.input(ccaaInput);
 </div>
 
 <div class="grid grid-cols-4">
-  <h2 class="grid-colspan-4">TK TK Interactivo lorem ipsum título</h2>
-  <div class="sticky grid-colspan-1">Sliders</div>
+  <h2 class="grid-colspan-4">TK TK Customize the index</h2>
+  <div class="sticky grid-colspan-1">TK TK Sliders</div>
   <div class="card grid-colspan-3"></div>
 </div>
 
-<p class="notes">TK TK Justificación y links a los originales</p>
+<p class="notes">Este panel de datos reimagina la visualización del <a href="https://www.ine.es/experimental/imcv/experimental_ind_multi_calidad_vida.htm" target="_blank">Indicador Multidimensional de Calidad de Vida en España</a>, una estadística experimental del Instituto Nacional de Estadística, a partir de los datos abiertos disponibles en el INE.</p>
 
 <style>
   .grid-charts {

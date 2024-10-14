@@ -77,12 +77,12 @@ iframe {
 
 <div class="hero">
   <h1>Índice de Calidad de Vida (INE)</h1>
-  <h2>TK TK</h2>
+  <h2 style="max-width: 50%;">El IMCV es un indicador experimental desarrollado por el Instituto Nacional de Estadística de España (INE) construido a partir de 60 indicadores específicos agrupados en nueve dimensiones, que ofrece una visión general de la calidad de vida en España.
+</h2>
 </div>
 
 <!-- <iframe id="iframe" scrolling="no" src="https://sequera.fndvit.org/"></iframe> -->
 
-TK TK
 
 <div class="grid grid-cols-3">
   <div class="card">
@@ -92,7 +92,7 @@ TK TK
     <h2><a href="making-of"><em>Making-of</em> y otros enredos</a></h2>
   </div>
   <div class="card">
-    <h2><a href="">Los datos, en bruto</a></h2>
+    <h2><a href="data">Los datos, en bruto</a></h2>
   </div>
 </div>
 

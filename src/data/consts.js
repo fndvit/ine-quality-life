@@ -41,25 +41,25 @@ export const dimDict = ({
     dim9: "Experiencia general de la vida"
   });
 
-  export const yearTexts = ({
-    2008: "En 2008, Navarra, La Rioja y Asturias tienen los índices más elevados, todas superando ligeramente la media nacional. En el otro extremo, Ceuta, Galicia y Canarias se encuentran por debajo de la media, especialmente en Ocio y Condiciones materiales de vida.",
-    2009: "En 2009, Navarra y La Rioja continúan entre las regiones con mejores resultados, acompañadas por Aragón que sube al top 3. Galicia, Canarias y Ceuta siguen en los últimos lugares, sin cambios significativos en sus índices.",
-    2010: "Navarra, La Rioja y Aragón mantienen su liderazgo en 2010, con buenos resultados en Salud y Seguridad. Galicia sigue entre las regiones más rezagadas, acompañada de Ceuta y Andalucía, sin grandes mejoras en sus índices.",
-    2011: "En 2011, Navarra y Aragón vuelven a estar en el top junto a La Rioja, con buenos resultados en Gobernanza y Derechos básicos. Galicia y Ceuta se mantienen entre las regiones con los índices más bajos, mientras que Andalucía sigue mostrando resultados por debajo de la media.",
-    2012: "Navarra y Asturias encabezan el ranking en 2012, junto a La Rioja. En el lado contrario, Ceuta, Galicia y Canarias permanecen en los últimos lugares, afectadas principalmente por bajas en Condiciones materiales de vida.",
-    2013: "Navarra y La Rioja siguen con los índices más elevados en 2013, destacando en Seguridad y Entorno. Galicia y Ceuta continúan en la parte baja del ranking, sin avances significativos en Gobernanza y Vida social.",
-    2014: "La Rioja y Navarra vuelven a liderar en 2014, con buenos resultados en Ocio y Derechos básicos. Galicia sigue en los últimos lugares junto a Ceuta, afectada principalmente en Condiciones materiales y Seguridad física.",
-    2015: "En 2015, Navarra, La Rioja y Aragón mantienen los mejores resultados, destacando especialmente en Salud y Gobernanza. En cambio, Ceuta, Galicia y Canarias continúan en los últimos lugares, sin grandes mejoras en sus índices.",
-    2016: "En 2016, Navarra, La Rioja y País Vasco encabezan el ranking, con buenos resultados en Seguridad y Entorno. Ceuta, Galicia y Canarias permanecen entre los más rezagados, con índices bajos en Condiciones materiales de vida y Trabajo.",
-    2017: "Navarra y La Rioja mantienen su liderazgo en 2017, con buenos resultados en Educación y Seguridad. Ceuta mejora ligeramente pero sigue en la parte baja, acompañada por Galicia, ambas con dificultades en Ocio y Trabajo.",
-    2018: "Navarra y Aragón ocupan los primeros puestos en 2018, superando la media en Salud y Entorno. Andalucía cae al grupo de las últimas posiciones junto a Ceuta, con bajos índices en Trabajo y Condiciones materiales de vida.",
-    2019: "Navarra y La Rioja siguen liderando en 2019, destacando en Gobernanza y Seguridad. Ceuta y Andalucía permanecen en los últimos puestos, sin grandes avances en Educación y Vida social.",
-    2020: "Navarra y Aragón mantienen buenos resultados en 2020, con índices altos en Seguridad y Ocio. Ceuta y Andalucía continúan con los índices más bajos, afectadas principalmente en Trabajo y Experiencia de vida.",
-    2021: "Navarra y La Rioja continúan en el top en 2021, con mejoras en Gobernanza y Derechos básicos. Ceuta y Andalucía siguen ocupando los últimos lugares, sin mejoras importantes en Ocio y Trabajo.",
-    2022: "Navarra y La Rioja cierran 2022 con los índices más altos, mostrando estabilidad en Educación y Seguridad. Canarias, que no había figurado entre las últimas, aparece junto a Ceuta con los índices más bajos, afectadas principalmente en Trabajo y Entorno."
-  }  
-  )
-  
+  export const yearTexts = (
+    {
+      2008:"En 2008, el año base del indicador, Navarra, La Rioja y Asturias lideran la tabla, mientras que Ceuta, Galicia y Canarias la cierran.",
+      2009:"En 2009, la calidad de vida en España descendió  respecto a 2008. Navarra y La Rioja continúan a la cabeza junto con Aragón, una de las que más mejora, en detrimento de Asturias. Galicia, una de las que más empeora, Canarias y Ceuta, una de las que más mejora, cierran la tabla. Murcia es de las que más caen.",
+      2010:"En 2010, la calidad de vida en España ascendió  respecto a 2009. Navarra, La Rioja y Aragón continúan a la cabeza. Galicia y Ceuta, una de las que más empeora, cierran la tabla junto con Andalucía. Canarias y Cataluña son de las que más mejoran, Melilla es de las que más caen.",
+      2011:"En 2011, la calidad de vida en España ascendió  respecto a 2010. Navarra, Aragón y La Rioja, una de las que más empeora, continúan a la cabeza. Galicia, Ceuta y Andalucía cierran la tabla. Melilla y Murcia son de las que más mejoran, País Vasco es de las que más caen.",
+      2012:"En 2012, la calidad de vida en España descendió ligeramente respecto a 2011. Navarra y La Rioja, una de las que más mejora, continúan a la cabeza junto con Asturias, otra de las que más mejora, en detrimento de Aragón. Ceuta, una de las que más empeora, y Galicia cierran la tabla junto con Canarias. Murcia es de las que más caen.",
+      2013:"En 2013, la calidad de vida en España descendió  respecto a 2012. Navarra, La Rioja, una de las que más mejora, y Asturias continúan a la cabeza. Ceuta, Galicia y Canarias cierran la tabla. Cataluña es de las que más mejoran, Melilla y Aragón son de las que más caen.",
+      2014:"En 2014, la calidad de vida en España ascendió ligeramente respecto a 2013. Navarra, La Rioja y Asturias, una de las que más mejora, continúan a la cabeza. Ceuta, Galicia, las dos que más empeoran, y Canarias cierran la tabla. Melilla es de las que más mejoran",
+      2015:"En 2015, la calidad de vida en España ascendió  respecto a 2014. Navarra y La Rioja continúan a la cabeza junto con Aragón, en detrimento de Asturias. Ceuta, una de las que más mejora, Galicia y Canarias cierran la tabla. Extremadura es de las que más mejoran, Melilla y Castilla-La Mancha son de las que más caen.",
+      2016:"En 2016, la calidad de vida en España ascendió  respecto a 2015. Navarra y La Rioja continúan a la cabeza junto con País Vasco, en detrimento de Aragón. Ceuta, Galicia y Canarias cierran la tabla. Baleares y Cataluña son de las que más mejoran, Melilla y Cantabria son de las que más caen.",
+      2017:"En 2017, la calidad de vida en España ascendió  respecto a 2016. Navarra y La Rioja continúan a la cabeza junto con Cantabria, una de las que más mejora, en detrimento de País Vasco. Galicia, Ceuta y Canarias cierran la tabla. Melilla es de las que más mejoran",
+      2018:"En 2018, la calidad de vida en España ascendió  respecto a 2017. Navarra, una de las que más empeora, y Cantabria continúan a la cabeza junto con Aragón, en detrimento de La Rioja. Ceuta y Galicia, una de las que más mejora, cierran la tabla junto con Andalucía. Extremadura es de las que más mejoran, País Vasco es de las que más caen.",
+      2019:"En 2019, la calidad de vida en España ascendió  respecto a 2018. Navarra, una de las que más mejora, y Aragón continúan a la cabeza junto con La Rioja, una de las que más mejora, en detrimento de Cantabria. Ceuta y Andalucía cierran la tabla junto con Murcia. Asturias y Baleares son de las que más caen.",
+      2020:"En 2020, la calidad de vida en España descendió  respecto a 2019. Navarra, Aragón y La Rioja continúan a la cabeza. Ceuta y Andalucía cierran la tabla junto con Canarias, una de las que más empeora. Baleares y Asturias son de las que más mejoran, Melilla es de las que más caen.",
+      2021:"En 2021, la calidad de vida en España descendió ligeramente respecto a 2020. Navarra, La Rioja y Aragón, una de las que más empeora, continúan a la cabeza. Ceuta, Andalucía y Canarias cierran la tabla. Extremadura y País Vasco son de las que más mejoran, Baleares es de las que más caen.",
+      2022:"En 2022, la calidad de vida en España descendió  respecto a 2021. Navarra, La Rioja y Aragón continúan a la cabeza. Ceuta, una de las que más empeora, Canarias y Andalucía, una de las que más mejora, cierran la tabla. País Vasco es de las que más mejoran, Baleares es de las que más caen."
+     }
+)
   
 export const dimList = [...new Set(data.map((d) => d.dim))].filter((dim) => dim.startsWith("dim"));
 

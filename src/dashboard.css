@@ -33,6 +33,10 @@
   --theme-foreground-focus: #f3f3f3; */
 }
 
+h1 {
+  font-size: 3.2rem;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--sans-serif);
   font-weight: 600;
@@ -70,7 +74,7 @@ li, label { font-weight: 500;}
 .card h3 { font-size: 1rem;}
 .card h4 { font-size: .85rem;}
 
-.header p {
+p {
   padding-top: 1rem;
   font-size: 1rem;
   line-height: 1.75rem;
@@ -141,6 +145,7 @@ input[type='checkbox'] {
   font-size: .85rem;
   color: var(--dashboard-foreground-muted);
   width: 75%;
+  line-height: 1.25rem!important;
 }
 
 .legend {

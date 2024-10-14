@@ -3,23 +3,21 @@ title: Making-of y otros enredos
 toc: true
 ---
 
-# Cómo rehicimos el Índice de Calidad de Vida de España por el INE
-El **[IMCV](https://ine.es/experimental/imcv/experimental_ind_multi_calidad_vida.htm)** es un [indicador experimental](https://ine.es/experimental/experimental.htm) desarrollado por el [Instituto Nacional de Estadística de España (INE)](https://ine.es/) construido a partir de 60 indicadores específicos agrupados en nueve dimensiones, que ofrece una visión general de la calidad de vida en España.
-
+# Cómo (y por qué) rehicimos el Indicador del INE
 Como viene siendo habitual cuando reimaginamos otras aplicaciones de datos públicos abiertos, el objetivo de este esfuerzo es celebrar los datos abiertos. Ya es emocionante que los datos existan, pero cuando se acompañan de una visualización que nos ayude a comprenderlos y explorarlos, ¡es aún más emocionante! Y, como siempre, hemos respetado el diseño original al tiempo que intentamos mejorar la claridad y la usabilidad del mismo.
 
 Y al igual que con nuestra iniciativa **[Catalunya en Dades](https://catalunya-en-dades.fndvit.org/)**, utilizamos [Observable, un generador de sitios estáticos gratuito y de código abierto](https://github.com/observablehq/framework) para aplicaciones de datos, en lugar de productos de software comerciales como _Tableau_ (la herramienta utilizada por el INE en este caso) o _Power BI_ (la herramienta utilizada por la administración catalana).
 
 ---
-## _Nos encantan_ las flores
-La visualización principal es un puñado de **flores multicolores**, una para cada comunidad autónoma. Dentro de cada flor, cada pétalo representa una de las nueve dimensiones del índice cuya longitud —y grosor— representa el valor de esa dimensión en la región.
+## **Nos chiflan** las flores
+La visualización principal es un puñado de **flores multicolores**, una para cada comunidad autónoma. En cada flor, cada pétalo representa una de las nueve dimensiones del índice y la longitud —y grosor— de cada pétalo representa el valor de esa dimensión en la región.
 
-Está basado en una visualización de 2013 del [Índice de Mejor Vida de la OCDE](https://www.oecdbetterlifeindex.org/), realizada por [Moritz Stefaner en colaboración con Raureif y Dominikus Baur](https://truth-and-beauty.net/projects/oecd-better-life-index). (Supongo que el concepto del índice en sí está igualmente inspirado en el índice de la OCDE).
+Está basado en una visualización de 2013 del [Índice de Mejor Vida de la OCDE](https://www.oecdbetterlifeindex.org/), realizada por [Moritz Stefaner en colaboración con Raureif y Dominikus Baur](https://truth-and-beauty.net/projects/oecd-better-life-index). (El concepto del índice en sí está igualmente inspirado en el [índice de la OCDE y otros proyectos similares](https://ine.es/experimental/imcv/exp_calidad_vida_multi.pdf)).
 
 No hemos _rediseñado_ la visualización de flor; solo la hemos limpiado, manteniendo los colores y la forma. Dado que estamos usando D3 en lugar de Tableau, lo que usó el INE originalmente, tenemos un control más preciso sobre la estética de las figuras.
 
 ---
-## También _nos encantan_ los mosaicos
+## También **nos chiflan** los mosaicos
 Hemos propuesto una visión general ligeramente diferente, con la parte superior dispuesta geográficamente en lugar de ordenada por valores como en el panel original. Hacemos eso porque hemos movido el segundo panel —en el que puedes manipular el peso de cada dimensión— a la parte inferior de la aplicación y ya puedes jugar con el orden allí.
 
 Los mapas en mosaico son un dispositivo visual fascinante y una [obsesión nuestra](https://github.com/fndvit/barfi).
