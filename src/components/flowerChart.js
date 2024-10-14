@@ -35,6 +35,11 @@ export function flowerChart(data, selectedCCAA, year, y, cat, r) {
     .domain(d3.extent(data.map((d) => d[y]))) 
     .range([r / 3, r]); 
 
+  const yScaleSteam = d3
+    .scaleLinear()
+    .domain(d3.extent(data.map((d) => d[y]))) 
+    .range([0, r*2]); 
+
   // Define the arc
   const arc = d3
     .arc()
@@ -49,7 +54,7 @@ export function flowerChart(data, selectedCCAA, year, y, cat, r) {
     ) // Angle end
     .cornerRadius(r);
 
-  const baseY = r - yScale(indexValue) - 20;
+  const baseY = r - yScaleSteam(indexValue);
 
   const svg = d3
     .create("svg")
