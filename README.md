@@ -1,53 +1,63 @@
-# INE Quality of Life Index
+# Remake del 'Índice Multidimensional de Calidad de Vida' del INE
 
-This is an [Observable Framework](https://observablehq.com/framework) app. To start the local preview server, run:
+TK TK Imágenes
+
+TK TK Explicación
+
+---
+
+## Cómo iniciar el proyecto
+
+Esta aplicación es un proyecto de [*Observable Framework*](https://observablehq.com/framework). Para iniciar el servidor local y verla, ejecuta:
 
 ```
 npm run dev
 ```
 
-Then visit <http://localhost:3000> to preview your app.
+Luego, visita <http://localhost:3000> para previsualizar tu aplicación.
 
-For more, see <https://observablehq.com/framework/getting-started>.
+Para más información, consulta <https://observablehq.com/framework/getting-started>.
 
-## Project structure
-
-A typical Framework project looks like this:
+## Estructura del proyecto
 
 ```ini
 .
 ├─ src
 │  ├─ components
-│  │  └─ timeline.js           # an importable module
+│  │  └─ filterLegend.js       # la legenda interactiva
+│  │  └─ flowerChart.js        # los gráficos de las flores
+│  │  └─ lineChart.js          # los gráficos de línea
+│  │  └─ tileMap.js            # el mosaico
 │  ├─ data
-│  │  ├─ launches.csv.js       # a data loader
-│  │  └─ events.json           # a static data file
-│  ├─ example-dashboard.md     # a page
-│  ├─ example-report.md        # another page
-│  └─ index.md                 # the home page
+│  │  ├─ consts.js             # funciones auxiliares y diccionarios
+│  │  └─ imcv.json             # los datos del indicador
+│  ├─ imcv-dashboard.md        # una página
+│  ├─ making-of.md             # otra página
+│  ├─ data.md                  # otra página
+│  └─ index.md                 # la página principal
 ├─ .gitignore
-├─ observablehq.config.js      # the app config file
+├─ observablehq.config.js      # el archivo de configuración de la app
 ├─ package.json
 └─ README.md
 ```
 
-**`src`** - This is the “source root” — where your source files live. Pages go here. Each page is a Markdown file. Observable Framework uses [file-based routing](https://observablehq.com/framework/routing), which means that the name of the file controls where the page is served. You can create as many pages as you like. Use folders to organize your pages.
+**`src`** - Este es el “directorio raíz de fuentes” — donde residen tus archivos fuente. Las páginas van aquí. Cada página es un archivo Markdown. *Observable Framework* usa [enrutamiento basado en archivos](https://observablehq.com/framework/routing), con lo que el nombre del archivo controla dónde se sirve la página. Puedes crear tantas páginas como desees. Usa carpetas para organizar tus páginas.
 
-**`src/index.md`** - This is the home page for your app. You can have as many additional pages as you’d like, but you should always have a home page, too.
+**`src/index.md`** - Esta es la página principal de la aplicación. Puedes tener tantas páginas adicionales como quieras, pero siempre debes tener también una página de inicio.
 
-**`src/data`** - You can put [data loaders](https://observablehq.com/framework/loaders) or static data files anywhere in your source root, but we recommend putting them here.
+**`src/data`** - Puedes poner [cargadores de datos](https://observablehq.com/framework/loaders) o archivos de datos estáticos en cualquier lugar del directorio raíz de fuentes, pero recomendamos colocarlos aquí.
 
-**`src/components`** - You can put shared [JavaScript modules](https://observablehq.com/framework/javascript/imports) anywhere in your source root, but we recommend putting them here. This helps you pull code out of Markdown files and into JavaScript modules, making it easier to reuse code across pages, write tests and run linters, and even share code with vanilla web applications.
+**`src/components`** - Puedes poner módulos compartidos de [JavaScript](https://observablehq.com/framework/javascript/imports) en cualquier parte del directorio raíz de fuentes, pero recomendamos colocarlos aquí. Esto te ayuda a separar el código de los archivos Markdown y pasarlo a módulos de JavaScript, lo que facilita la reutilización del código entre páginas, escribir pruebas y ejecutar linters, e incluso compartir código con aplicaciones web estándar.
 
-**`observablehq.config.js`** - This is the [app configuration](https://observablehq.com/framework/config) file, such as the pages and sections in the sidebar navigation, and the app’s title.
+**`observablehq.config.js`** - Este es el archivo de [configuración de la aplicación](https://observablehq.com/framework/config), donde se definen las páginas y secciones en la navegación lateral, así como el título de la aplicación.
 
-## Command reference
+## Referencia de comandos
 
-| Command           | Description                                              |
-| ----------------- | -------------------------------------------------------- |
-| `npm install`            | Install or reinstall dependencies                        |
-| `npm run dev`        | Start local preview server                               |
-| `npm run build`      | Build your static site, generating `./dist`              |
-| `npm run deploy`     | Deploy your app to Observable                            |
-| `npm run clean`      | Clear the local data loader cache                        |
-| `npm run observable` | Run commands like `observable help`                      |
+| Comando              | Descripción                                              |
+| -------------------- | -------------------------------------------------------- |
+| `npm install`        | Instalar o reinstalar dependencias                       |
+| `npm run dev`        | Iniciar el servidor de vista previa local                |
+| `npm run build`      | Construir tu sitio estático, generando `./dist`          |
+| `npm run deploy`     | Desplegar tu aplicación en Observable                    |
+| `npm run clean`      | Limpiar la caché local del cargador de datos             |
+| `npm run observable` | Ejecutar comandos como `observable help`                 |
