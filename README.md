@@ -31,9 +31,9 @@ Para más información, consulta <https://observablehq.com/framework/getting-sta
 │  ├─ data
 │  │  ├─ consts.js             # funciones auxiliares y diccionarios
 │  │  └─ imcv.json             # los datos del indicador
-│  ├─ imcv-dashboard.md        # una página
-│  ├─ making-of.md             # otra página
-│  ├─ data.md                  # otra página
+│  ├─ imcv-dashboard.md        # panel de datos del indicador
+│  ├─ making-of.md             # post sobre cómo hicimos el panel
+│  ├─ data.md                  # descarga los datos
 │  └─ index.md                 # la página principal
 ├─ .gitignore
 ├─ observablehq.config.js      # el archivo de configuración de la app
