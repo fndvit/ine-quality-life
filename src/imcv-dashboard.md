@@ -6,8 +6,10 @@ style: ../dashboard.css
 
 ```js
 import {data as imcv, ccaaList, ccaaColors, dimList, dimDict} from "./data/consts.js";
+import {customIndexChart} from "./components/customIndexChart.js"
 import {filterLegend} from "./components/filterLegend.js";
 import {flowerChart} from "./components/flowerChart.js";
+import {slopeChart} from "./components/slopeChart.js";
 import {lineChart} from "./components/lineChart.js";
 import {tilemap} from "./components/tileMap.js";
 
@@ -21,9 +23,108 @@ const yearInput = Inputs.range(d3.extent(imcv.map((d) => d.year)), {
   });
 const year = Generators.input(yearInput);
 
+
 const ccaaInput = filterLegend(ccaaList.filter(d => d !== "Total"), ccaaColors.filter(d =>  d !== "#797974"))
 const ccaa = Generators.input(ccaaInput);
+```
 
+```js
+const clickedSlider = Mutable("None");
+const setClickedSlider = (x) => (clickedSlider.value = x);
+ 
+const weightsInput = Inputs.form(
+  d3.range(0, 9).map((d) => {
+    const slider = Inputs.range([1, 10], {
+      label: dimDict[dimList[d]],
+      step: 1,
+      value: 1
+    });
+
+    slider.addEventListener("mousedown", (event) => {
+      setClickedSlider(dimList[d]);
+    });
+
+    slider.addEventListener("mouseup", (event) => {
+      setClickedSlider("None");
+    });
+
+    return slider;
+  })
+);
+const weights = Generators.input(weightsInput);
+```
+
+```js
+const groupedByYearAndRegion =
+  imcv 
+  .reduce((acc, curr) => {
+    if (curr.year === year) {
+      if (!acc[curr.ccaa]) {
+        acc[curr.ccaa] = [];
+      }
+      acc[curr.ccaa].push(curr);
+    }
+    return acc;
+  }, {});
+```
+
+```js
+const customAmpi = [];
+const selectedYearScores = [];
+
+for (const region of ccaaList) {
+  const regionData = groupedByYearAndRegion[region];
+
+  let weightedSum = 0;
+  let totalMultiplier = 0;
+  let indexValue = null;
+
+  for (const curr of regionData) {
+    if (curr.dim === 'index') {
+      indexValue = curr.val;
+    } else {
+      const dimIndex = parseInt(curr.dim.replace("dim", "")) - 1;
+      const multiplier = weights[dimIndex];
+      weightedSum += curr.val * multiplier;
+      totalMultiplier += multiplier;
+    }
+  }
+
+  const weightedAverage = weightedSum / totalMultiplier;
+  customAmpi.push({ ccaa: region, val: weightedAverage });
+  selectedYearScores.push({ ccaa: region, val: indexValue });
+}
+```
+
+```js
+const sortedCustomAmpi = customAmpi.slice().sort((a, b) => b.val - a.val);
+const sortedSelectedYearScores = selectedYearScores.slice().sort((a, b) => b.val - a.val);
+
+const slopePositions = sortedSelectedYearScores.flatMap((cur, i) => {
+  const initialPosition = i + 1;
+  const finalPosition = sortedCustomAmpi.findIndex((item) => item.ccaa === cur.ccaa) + 1;
+
+  return [
+    { ccaa: cur.ccaa, stage: "initial", position: initialPosition },
+    { ccaa: cur.ccaa, stage: "final", position: finalPosition }
+  ];
+});
+
+const dimensionDiffs = {};
+for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
+  const avg = customAmpi.find((p) => p.ccaa === key).val;
+
+  const ccaaValues = entries.reduce((acc, obj) => {
+    acc[obj.dim] = {
+      avg: avg,
+      dimVal: obj.val,
+      diff: avg - obj.val
+    };
+    return acc;
+  }, {});
+
+  dimensionDiffs[key] = ccaaValues;
+}
 ```
 
 # TK TK Titular del Índice
@@ -80,15 +181,36 @@ const ccaa = Generators.input(ccaaInput);
 
 </div>
 
-<div class="grid grid-cols-4">
-  <h2 class="grid-colspan-4">TK TK Interactivo lorem ipsum título</h2>
-  <div class="sticky grid-colspan-1">Sliders</div>
-  <div class="card grid-colspan-3"></div>
+<div class="grid grid-custom-index">
+  <h2 class="header">TK TK Interactivo lorem ipsum título</h2>
+  <div class="sticky menu">${weightsInput}</div>
+  <div class="card" style="display:flex">
+    <div style="flex:1"> 
+      ${slopeChart(slopePositions, 800)}
+    </div>
+    <div style="flex:7"> 
+      ${customIndexChart(imcv, customAmpi, dimensionDiffs, clickedSlider, year, 800)} 
+    </div>
+  </div>
 </div>
 
 <p class="notes">TK TK Justificación y links a los originales</p>
 
 <style>
+  .grid-custom-index {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "header header"
+      "menu card"
+  }
+
+  .custom-index-chart {
+    display: flex;
+    flex-direction: row;
+  }
+
   .grid-charts {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
