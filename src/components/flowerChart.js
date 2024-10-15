@@ -23,6 +23,7 @@ function moveTooltip(tooltip, event){
 
 export function flowerChart(data, selectedCCAA, year, y, cat, r) {
   const dataCCAA = data.filter((o) => o.ccaa === selectedCCAA && o.dim !== "index" && o.year === year);
+  console.log(dataCCAA)
   const indexValue = data.filter((o) => o.ccaa === selectedCCAA && o.dim === "index" && o.year === year )[0].val;
 
   const numSegments = dataCCAA.length;
