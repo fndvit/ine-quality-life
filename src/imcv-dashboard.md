@@ -5,7 +5,7 @@ style: ../dashboard.css
 ---
 
 ```js
-import {data as imcv, ccaaList, ccaaColors, dimList, dimDict} from "./data/consts.js";
+import {data as imcv, ccaaList, ccaaColors, dimList, dimDict, yearTexts} from "./data/consts.js";
 import {customIndexChart} from "./components/customIndexChart.js"
 import {filterLegend} from "./components/filterLegend.js";
 import {flowerChart} from "./components/flowerChart.js";
@@ -127,11 +127,13 @@ for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
 }
 ```
 
-# TK TK Titular del Índice
-## TK TK subtítulo
+# La calidad de vida en España
 
 <div class="grid grid-charts">
-  <h2 class="header">TK TK Flores lorem ipsum título</h2> 
+  <div class="header">
+    <h2>¿Cuáles son las comunidades autónomas con mejor calidad de vida?</h2>
+    <p>${yearTexts[year]} A continuación puedes explorar los valores de las dimensiones para cada comunidad autónoma para el año seleccionado.</p>
+  </div>
   <div class="menu sticky"> ${yearInput} </div>
   
   <div class="card center chart"> 
@@ -157,7 +159,11 @@ for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
 </div>
 
 <div class="grid grid-charts">
-  <h2 class="header">TK TK Tendencias lorem ipsum título</h2>
+  <div class="header">
+    <h2>¿Cómo han evolucionado las dimensiones del índice?</h2>
+    <p>En estos gráficos puedes explorar la tendencia de cada comunidad autónoma y cada dimensión. La única dimensión que crece de manera relativamente consistente es Educación. Las más cambiantes son Trabajo —especialmente en momentos de crisis, Salud —muy variable de año en año, y Condiciones materiales de vida, Seguridad física y personal y Entorno y medioambiente con variaciones significativas entre años y entre comunidades autónomas. En contraste, Gobernanza y derechos básicos, Ocio y relaciones sociales< y Experiencia general de la vida se mantienen con fluctuaciones mínimas.</p>
+  </div>
+  
   <div class="sticky menu menu-tendencias">
     ${ccaaInput}
     <p class="notes">Para asegurar la legibilidad de las gráficas, el filtro sólo te permite comparar hasta seis CC.AA. a la vez.</p>
@@ -194,7 +200,7 @@ for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
   </div>
 </div>
 
-<p class="notes">TK TK Justificación y links a los originales</p>
+<p class="notes">Este panel de datos reimagina la visualización del <a href="https://www.ine.es/experimental/imcv/experimental_ind_multi_calidad_vida.htm" target="_blank">Indicador Multidimensional de Calidad de Vida en España</a>, una estadística experimental del Instituto Nacional de Estadística, a partir de los datos abiertos disponibles en el INE.</p>
 
 <style>
   .grid-custom-index {
