@@ -51,7 +51,7 @@ No hemos _rediseñado_ la visualización de flor; solo la hemos limpiado, manten
 
 <div class="figure-container">
     <figure>
-        <div class="card center chart" style="margin: 0" >
+        <div class="card center chart" style="margin: 0; max-width: 400px" >
             ${
             flowerChart(
                 imcv,
@@ -102,7 +102,7 @@ Ajustamos [el código de la leyenda interactiva de Toph Tucker](https://observab
 
 <div class="figure-container">
     <figure>
-        <div class="card chart" >
+        <div class="card chart" style="max-width: 400px" >
             ${lineChart(imcv, ccaaList, "index", 600, 240, "year", "val", "ccaa")}
         </div>
         <figcaption>La visualización de tendencias que sufre el llamado efecto del suéter multicolor.</figcaption>
