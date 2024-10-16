@@ -210,7 +210,6 @@ input[type='checkbox'] {
   display: flex;
   justify-content: space-between;
   gap: 2%;
-  max-width: 600px;
   width: 100%;
 }
 
@@ -221,11 +220,15 @@ input[type='checkbox'] {
 
 .figure-container img {
   width: 100%;
-  height: 150px;
+  height: auto;
   object-fit: cover;
-  border-radius: 2%; 
+  border-radius: 10px; 
 }
 
 .figure-container figcaption { 
   margin-top: 2%;
+}
+
+figure {
+  max-width: 1200px;
 }

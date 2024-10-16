@@ -5,8 +5,9 @@ style: ../dashboard.css
 ---
 
 ```js
-import {data as imcv} from "./data/consts.js";
+import {data as imcv, ccaaList} from "./data/consts.js";
 import {flowerChart} from "./components/flowerChart.js";
+import {lineChart} from "./components/lineChart.js";
 import {tilemap} from "./components/tileMap.js";
 
 //if not here not working
@@ -17,6 +18,13 @@ const data = await FileAttachment("data/imcv.json").json();
 Como viene siendo habitual cuando reimaginamos otras aplicaciones de datos públicos abiertos, el objetivo de este esfuerzo es celebrar los datos abiertos. Ya es emocionante que los datos existan, pero cuando se acompañan de una visualización que nos ayude a comprenderlos y explorarlos, ¡es aún más emocionante! Y, como siempre, hemos respetado el diseño original al tiempo que intentamos mejorar la claridad y la usabilidad del mismo.
 
 Y al igual que con nuestra iniciativa **[Catalunya en Dades](https://catalunya-en-dades.fndvit.org/)**, utilizamos [Observable, un generador de sitios estáticos gratuito y de código abierto](https://github.com/observablehq/framework) para aplicaciones de datos, en lugar de productos de software comerciales como _Tableau_ (la herramienta utilizada por el INE en este caso) o _Power BI_ (la herramienta utilizada por la administración catalana).
+
+<div class="figure-container">
+    <figure>
+        <img src="img/mqli_preview.PNG" alt="IMCV original" />
+        <figcaption>Pagina de MQLI (IMCV en Español) un indicador experimental sobre la calidad de vida desarrollado por el instituto nacional de estadistica (INE)</figcaption>
+    </figure>
+</div>
 
 ---
 ## **Nos chiflan** las flores
@@ -29,6 +37,10 @@ Está basado en una visualización de 2013 del [Índice de Mejor Vida de la OCDE
         <img src="img/oecd.PNG" alt="OECD" />
         <figcaption>Visualización Índice de Mejor Vida de la OCDE (2013)</figcaption>
     </figure>
+</div>
+
+
+<div class="figure-container">
     <figure>
         <img src="img/imcv.PNG" alt="IMCV original" />
         <figcaption>Visualización IMCV utilizando Tableau</figcaption>
@@ -62,8 +74,8 @@ Los mapas en mosaico son un dispositivo visual fascinante y una [obsesión nuest
 
 <div class="figure-container">
     <figure>
-        <img style="height: auto" src="img/mosaico.PNG" alt="Visualizacion mundial mosaico" />
-        <figcaption>Mosaico mundial utilizado para el proyecto de UNEP sobre la <a href="https://www.unep.org/interactives/air-pollution-note/" target="_blank"> calidad del aire. </a> </figcaption>
+        <img src="img/mosaico.PNG" alt="Visualizacion mundial mosaico" />
+        <figcaption>Mosaico mundial utilizado para el proyecto de UNEP sobre el <a href="https://www.unep.org/interactives/air-pollution-note/" target="_blank"> estado del clima. </a> </figcaption>
     </figure>
 </div>
 
@@ -87,34 +99,13 @@ Los gráficos de línea de la mitad inferior del panel se filtran con un menú q
 
 Ajustamos [el código de la leyenda interactiva de Toph Tucker](https://observablehq.com/@tophtucker/interactive-plot-legend) para limitar la cantidad de comunidades que puedes seleccionar y evitar así el **[efecto de suéter multicolor](https://www.westknits.com/products/rain-or-shine-sweater)**.
 
-<div class="figure-container" >
+
+<div class="figure-container">
     <figure>
-        <div class="card center chart" style="margin: 0" >
-            ${
-                Plot.plot({
-                    height: 500,
-                    width: 800,
-                    x: {
-                        axis: null
-                    },
-                    y: {
-                        axis: null,
-                        grid: true
-                    },
-                    color: {
-                        domain: Array.from({length: 35}, (_, i) => i),
-                        range: d3.schemeTableau10,
-                    },
-                    marks: [
-                        Plot.barY(
-                            Array.from({length: 35}, (_, i) => ({x: `Category ${i + 1}`, y: Math.random() * 100})),
-                            {x: "x", y: "y", fill: (_, i) => i}
-                        )
-                    ]
-                })
-            }
+        <div class="card chart" >
+            ${lineChart(imcv, ccaaList, "index", 600, 240, "year", "val", "ccaa")}
         </div>
-        <figcaption>Ejemplo de visualización con demasiados colores.</figcaption>
+        <figcaption>La visualización de tendencias que sufre el llamado efecto del suéter multicolor.</figcaption>
     </figure>
 </div>
 
