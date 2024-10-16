@@ -15,6 +15,7 @@ import {tilemap} from "./components/tileMap.js";
 
 //if not here not working
 const data = await FileAttachment("data/imcv.json").json();
+const imcvKey = await FileAttachment("data/images/IMCVKey.png").image();
 
 const yearInput = Inputs.range(d3.extent(imcv.map((d) => d.year)), {
     label: "Selecciona el año",
@@ -187,20 +188,17 @@ for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
 
 </div>
 
-<div class="grid grid-custom-index">
-  <h2 class="header">TK TK Interactivo lorem ipsum título</h2>
-  <div class="sticky menu">${weightsInput}</div>
-  <div class="card" style="display:flex">
-    <div style="flex:1"> 
-      ${slopeChart(slopePositions, 800)}
-    </div>
-    <div style="flex:7"> 
-      ${customIndexChart(imcv, customAmpi, dimensionDiffs, clickedSlider, year, 800)} 
-    </div>
+<div style="display:flex; flex-direction:row">
+  <div>
+    <h2 class="header">TK TK Interactivo lorem ipsum título</h2>
+    <p> Interacciona con los sliders para customizar el IMCV según tus prioridades. Explora cómo afecta a la puntuación de cada C.A. </p>
   </div>
-</div>
+  <div class="card">
+    ${imcvKey}
+  </div>
+<div>
 
-<p class="notes">Este panel de datos reimagina la visualización del <a href="https://www.ine.es/experimental/imcv/experimental_ind_multi_calidad_vida.htm" target="_blank">Indicador Multidimensional de Calidad de Vida en España</a>, una estadística experimental del Instituto Nacional de Estadística, a partir de los datos abiertos disponibles en el INE.</p>
+
 
 <style>
   .grid-custom-index {
@@ -208,7 +206,7 @@ for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
     grid-template-columns: 1fr 3fr;
     grid-template-rows: auto 1fr;
     grid-template-areas:
-      "header header"
+      "header card"
       "menu card"
   }
 
