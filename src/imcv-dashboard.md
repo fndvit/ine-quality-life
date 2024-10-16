@@ -56,6 +56,12 @@ const weights = Generators.input(weightsInput);
 ```
 
 ```js
+const isSimpleCheckbox = Inputs.radio([true, false], {label: "Show", value: false, format: (x) => x === true ? "Simple view" : "Full view"});
+
+const isSimple = Generators.input(isSimpleCheckbox);
+```
+
+```js
 const groupedByYearAndRegion =
   imcv 
   .reduce((acc, curr) => {
@@ -185,34 +191,52 @@ for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
       `)
     }
   </div>
-
 </div>
 
-<div style="display:flex; flex-direction:row">
-  <div>
-    <h2 class="header">TK TK Interactivo lorem ipsum título</h2>
+<div class="grid grid-custom-index">
+  <div  class="header">
+    <h2>TK TK Interactivo lorem ipsum título</h2>
     <p> Interacciona con los sliders para customizar el IMCV según tus prioridades. Explora cómo afecta a la puntuación de cada C.A. </p>
   </div>
-  <div class="card">
-    ${imcvKey}
-  </div>
-<div>
 
+  <div class="card">
+      ${imcvKey}
+  </div>
+
+  <div class="sticky menu">
+    ${weightsInput}
+    ${isSimpleCheckbox}
+  </div>
+
+  <div class="chart card" style="display:flex">
+    <div style="flex:1"> 
+      ${slopeChart(slopePositions, 800)}
+    </div>
+    <div style="flex:7"> 
+      ${customIndexChart(imcv, customAmpi, dimensionDiffs, clickedSlider, year, 800, isSimple)} 
+    </div>
+  </div>
+</div>
 
 
 <style>
   .grid-custom-index {
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto 1fr;
     grid-template-areas:
-      "header card"
-      "menu card"
+      "header header header card"
+      "menu chart chart chart"
   }
 
   .custom-index-chart {
     display: flex;
     flex-direction: row;
+  }
+
+  .responsive-image {
+    max-width: 100%;
+    height: auto;
   }
 
   .grid-charts {
@@ -259,6 +283,14 @@ for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
         "header header"
         "menu chart"
         "map map";
+    }
+    .grid-custom-index {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto auto 1fr;
+      grid-template-areas:
+        "header header header"
+        "card card card"
+        "menu chart chart";
     }
     .menu-tendencias {
       height: 300px;

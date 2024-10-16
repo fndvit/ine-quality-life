@@ -2,7 +2,7 @@ import * as Plot from "npm:@observablehq/plot";
 import {resize} from "npm:@observablehq/stdlib";
 import {customIndexColors} from "../data/consts.js";
 
-export function customIndexChart(imcv, customAmpi, dimensionDiffs, clickedSlider, year, height) {
+export function customIndexChart(imcv, customAmpi, dimensionDiffs, clickedSlider, year, height, simple) {
   return resize((width) => 
     Plot.plot({
       width: width,
@@ -40,28 +40,32 @@ export function customIndexChart(imcv, customAmpi, dimensionDiffs, clickedSlider
           insetTop: 6,
           insetBottom: 6
         }),
-        Plot.barX(customAmpi, {
-          x1: "val",
-          x2: (d) => {
-            const original = imcv.find(
-              (o) =>
-                o.ccaa === d.ccaa && o.dim === "index" && o.year === year
-            );
-            return original.val;
-          },
-          y: "ccaa",
-          insetTop: 12,
-          insetBottom: 12,
-          fill: (d) => {
-            const original = imcv.find(
-              (o) =>
-                o.ccaa === d.ccaa && o.dim === "index" && o.year === year
-            );
-            return (original.val - d.val) * 2;
-          },
-          fillOpacity: 0.3
-        }),
-        ...(clickedSlider != "None"
+        ...(!simple
+          ? [
+              Plot.barX(customAmpi, {
+                x1: "val",
+                x2: (d) => {
+                  const original = imcv.find(
+                    (o) =>
+                      o.ccaa === d.ccaa && o.dim === "index" && o.year === year
+                  );
+                  return original.val;
+                },
+                y: "ccaa",
+                insetTop: 12,
+                insetBottom: 12,
+                fill: (d) => {
+                  const original = imcv.find(
+                    (o) =>
+                      o.ccaa === d.ccaa && o.dim === "index" && o.year === year
+                  );
+                  return (original.val - d.val) * 2;
+                },
+                fillOpacity: 0.3
+              })
+            ] 
+          : []),
+        ...((clickedSlider != "None" && !simple)
           ? [
               Plot.ruleY(
                 customAmpi.map((d) => d.ccaa),
@@ -76,39 +80,51 @@ export function customIndexChart(imcv, customAmpi, dimensionDiffs, clickedSlider
               )
             ]
           : []),
-        Plot.dotX(
-          imcv.filter((d) => d.year === year),
-          {
-            x: "val",
-            y: "ccaa",
-            r: 3,
-            fill: "#797974",
-            fillOpacity: 0.6,
-            stroke: "#ffffff"
-          }
-        ),
-        Plot.dotX(
-          imcv.filter((d) => d.dim === "index" && d.year === year),
-          {
-            x: "val",
-            y: "ccaa",
-            fill: "#ffffff",
-            stroke: "#797974",
-            strokeWidth: 2,
-            strokeOpacity: 0.6,
-            r: 5
-          }
-        ),
+        ...(!simple
+          ? [
+              Plot.dotX(
+                imcv.filter((d) => d.year === year),
+                {
+                  x: "val",
+                  y: "ccaa",
+                  r: 3,
+                  fill: "#797974",
+                  fillOpacity: 0.6,
+                  stroke: "#ffffff"
+                }
+              )
+            ] 
+          : []),
+        ...(!simple
+          ? [
+              Plot.dotX(
+                imcv.filter((d) => d.dim === "index" && d.year === year),
+                {
+                  x: "val",
+                  y: "ccaa",
+                  fill: "#ffffff",
+                  stroke: "#797974",
+                  strokeWidth: 2,
+                  strokeOpacity: 0.6,
+                  r: 5
+                }
+              ),
+            ] 
+          : []),  
         Plot.dotX(customAmpi, {
           x: "val",
           y: "ccaa",
           stroke: "#382f46",
           fill: (d) => {
-            const original = imcv.find(
-              (o) =>
-                o.ccaa === d.ccaa && o.dim === "index" && o.year === year
-            );
-            return (original.val - d.val) * 2;
+            if(!simple) {
+              const original = imcv.find(
+                (o) =>
+                  o.ccaa === d.ccaa && o.dim === "index" && o.year === year
+              );
+
+              return (original.val - d.val) * 2;
+            }
+            return "#efece8"
           },
           sort: { y: "x", reverse: true },
           tip: {
@@ -120,7 +136,7 @@ export function customIndexChart(imcv, customAmpi, dimensionDiffs, clickedSlider
           },
           r: 6
         }),
-        ...(clickedSlider != "None"
+        ...((clickedSlider != "None" && !simple)
           ? [
               Plot.dotX(
                 customAmpi.map((d) => d.ccaa),
