@@ -22,7 +22,7 @@ Y al igual que con nuestra iniciativa **[Catalunya en Dades](https://catalunya-e
 <div class="figure-container">
     <figure>
         <img src="img/mqli_preview.PNG" alt="IMCV original" />
-        <figcaption>Pagina de MQLI (IMCV en Español) un indicador experimental sobre la calidad de vida desarrollado por el instituto nacional de estadistica (INE)</figcaption>
+        <figcaption>Página del MQLI (IMCV en español), un indicador experimental sobre la calidad de vida, desarrollado por el Instituto Nacional de Estadística (INE).</figcaption>
     </figure>
 </div>
 
@@ -36,7 +36,7 @@ Está basado en una visualización de 2013 del [Índice de Mejor Vida de la OCDE
 <div class="figure-container">
     <figure>
         <img src="img/oecd.PNG" alt="OECD" />
-        <figcaption>Visualización Índice de Mejor Vida de la OCDE (2013)</figcaption>
+        <figcaption>Visualización del Índice para una Vida Mejor de la OCDE (2013).</figcaption>
     </figure>
 </div>
 
@@ -65,7 +65,7 @@ No hemos _rediseñado_ la visualización de flor; solo la hemos limpiado, manten
                 width > 600 ? width / 12 : width / 6)
             }
         </div>
-        <figcaption>Nuestra propuesta de visualicación.</figcaption>
+        <figcaption>Nuestra propuesta de visualización.</figcaption>
     </figure>
 </div>
 
@@ -111,7 +111,7 @@ Ajustamos [el código de la leyenda interactiva de Toph Tucker](https://observab
         <div class="card chart" style="max-width: 400px" >
             ${lineChart(imcv, ccaaList, "index", 600, 240, "year", "val", "ccaa")}
         </div>
-        <figcaption>La visualización de tendencias que sufre el llamado efecto del suéter multicolor.</figcaption>
+        <figcaption>Visualización de tendencias que presenta el llamado efecto del suéter multicolor.</figcaption>
     </figure>
 </div>
 
