@@ -11,51 +11,30 @@ const data = await FileAttachment("data/imcv.json").json();
 const selectDate = Inputs.select(d3.range(2008, 2023), {multiple: 4, value: d3.range(2008, 2023), label: "Selecciona los años", format: d=> d.toFixed(0)});
 const selectCCAA = Inputs.select(ccaaList, {multiple: 4, value:ccaaList, label: "Selecciona las comunidades autónomas", format: d=> ccaaNameDict[d]});
 const selectDim = Inputs.select([...dimList, "index"], {multiple: 4, value:[...dimList, "index"], label: "Selecciona las dimensiones", format: d=> dimDict[d]});
-```
 
-```js
+function set(input, value) {
+  input.value = value;
+  input.dispatchEvent(new Event("input", {bubbles: true}));
+}
+
 const resetFiltersButton = Inputs.button("Limipar filtros", 
   { 
-    value: 0, 
+    value: null, 
     reduce: (value) => {
-      selectDate.value = d3.range(2008, 2023);  
-      selectCCAA.value = ccaaList;             
-      selectDim.value = [...dimList, "index"];  
-      return value + 1;
+      set(selectDate, d3.range(2008, 2023));
+      set(selectCCAA, ccaaList);             
+      set(selectDim, [...dimList, "index"]); 
     } 
   }
 );
-```
 
-```js
 const filterInput = Inputs.form({
   date: selectDate,
   ccaa: selectCCAA,
   dim: selectDim,
-  //reset: resetFiltersButton
 }); 
-```
 
-```js
 const filter = Generators.input(filterInput)
-const reset = Generators.input(resetFiltersButton);
-```
-
-```js
-function updateDataView() {
-  return imcv
-    .filter(d => 
-      filter.date.includes(d.year) &&
-      filter.ccaa.includes(d.ccaa) &&
-      filter.dim.includes(d.dim)
-    )
-    .map((d) => ({
-      fecha: d.year.toFixed(0),
-      ccaa: ccaaNameDict[d.ccaa],
-      dim: dimDict[d.dim],
-      val: d.val
-    }));
-}
 ```
 
 ```js
@@ -64,7 +43,6 @@ const dataView = imcv
     filter.date.includes(d.year)
     && filter.ccaa.includes(d.ccaa)
     && filter.dim.includes(d.dim)
-    && reset !== -1
   )
   .map((d) => ({
     fecha: d.year.toFixed(0),
@@ -80,7 +58,6 @@ const table = Inputs.table(
   }
 );
 ```
-
 
 ```js
 const downloadJSON = (data) => {
@@ -100,9 +77,6 @@ const downloadJSON = (data) => {
 
 const downloadBtnJSON = Inputs.button("Descarga JSON", {
   reduce: () => downloadJSON(dataView)});
-
-const downloadBtnCSV = Inputs.button("Descarga CSV", {
-  reduce: () => downloadJSON(imcv)});
 
 const downloadOriginal = Inputs.button("Descarga los datos originales", {reduce: () => window.location.href = "https://www.ine.es/experimental/imcv/datos_calidad_vida_multi.xlsx", })
 
