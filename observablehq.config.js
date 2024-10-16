@@ -30,7 +30,7 @@ export default {
   pages: [
     {name: "El indicador", path: "/imcv-dashboard"},
     {name: "Cómo (y por qué) lo rehicimos", path: "/making-of"},
-    {name: "Los datos", path: "/data"},
+    {name: "Descarga los datos", path: "/data"},
   ],
   header:`<style>
 
