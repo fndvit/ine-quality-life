@@ -8,23 +8,63 @@ import {data as imcv, ccaaList, ccaaColors, ccaaNameDict, dimList, dimDict, year
 
 const data = await FileAttachment("data/imcv.json").json();
 
-const filterInput = Inputs.form({
-  date: Inputs.select(d3.range(2008, 2023), {multiple: 4, value: d3.range(2008, 2023), label: "Selecciona los años", format: d=> d.toFixed(0)}),
-  ccaa: Inputs.select(ccaaList, {multiple: 4, value:ccaaList, label: "Selecciona las comunidades autónomas", format: d=> ccaaNameDict[d]}),
-  dim: Inputs.select([...dimList, "index"], {multiple: 4, value:[...dimList, "index"], label: "Selecciona las dimensiones", format: d=> dimDict[d]})
-});
-
-const filter = Generators.input(filterInput)
-
+const selectDate = Inputs.select(d3.range(2008, 2023), {multiple: 4, value: d3.range(2008, 2023), label: "Selecciona los años", format: d=> d.toFixed(0)});
+const selectCCAA = Inputs.select(ccaaList, {multiple: 4, value:ccaaList, label: "Selecciona las comunidades autónomas", format: d=> ccaaNameDict[d]});
+const selectDim = Inputs.select([...dimList, "index"], {multiple: 4, value:[...dimList, "index"], label: "Selecciona las dimensiones", format: d=> dimDict[d]});
 ```
 
 ```js
+const resetFiltersButton = Inputs.button("Limipar filtros", 
+  { 
+    value: 0, 
+    reduce: (value) => {
+      selectDate.value = d3.range(2008, 2023);  
+      selectCCAA.value = ccaaList;             
+      selectDim.value = [...dimList, "index"];  
+      return value + 1;
+    } 
+  }
+);
+```
 
+```js
+const filterInput = Inputs.form({
+  date: selectDate,
+  ccaa: selectCCAA,
+  dim: selectDim,
+  //reset: resetFiltersButton
+}); 
+```
+
+```js
+const filter = Generators.input(filterInput)
+const reset = Generators.input(resetFiltersButton);
+```
+
+```js
+function updateDataView() {
+  return imcv
+    .filter(d => 
+      filter.date.includes(d.year) &&
+      filter.ccaa.includes(d.ccaa) &&
+      filter.dim.includes(d.dim)
+    )
+    .map((d) => ({
+      fecha: d.year.toFixed(0),
+      ccaa: ccaaNameDict[d.ccaa],
+      dim: dimDict[d.dim],
+      val: d.val
+    }));
+}
+```
+
+```js
 const dataView = imcv
   .filter(d=> 
     filter.date.includes(d.year)
     && filter.ccaa.includes(d.ccaa)
     && filter.dim.includes(d.dim)
+    && reset !== -1
   )
   .map((d) => ({
     fecha: d.year.toFixed(0),
@@ -32,7 +72,6 @@ const dataView = imcv
     dim: dimDict[d.dim],
     val: d.val
   }))
-  
 
 const table = Inputs.table(
   dataView,{
@@ -40,7 +79,10 @@ const table = Inputs.table(
     select: false
   }
 );
+```
 
+
+```js
 const downloadJSON = (data) => {
   const json = JSON.stringify(data, null, 2);
   const blob = new Blob([json], { type: "application/json" });
@@ -70,9 +112,8 @@ const downloadOriginal = Inputs.button("Descarga los datos originales", {reduce:
 
 En esta sección puedes **filtrar los datos** que visualizamos en el [panel](imcv-dashboard) por si quieres trabajar con ellos de manera independiente. Por defecto, todos los años, comunidades autónomas y dimensiones están seleccionadas.
 
-
 ${filterInput}
-
+${resetFiltersButton}
 
 Estos son **los datos que has seleccionado**. La estructura de la tabla es *[apilada](https://en.wikipedia.org/wiki/Wide_and_narrow_data)*, ciertamente menos legible para los humanos, pero más práctica para trabajar programáticamente.
 
