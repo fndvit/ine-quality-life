@@ -193,7 +193,30 @@ for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
   </div>
 </div>
 
-<div class="grid grid-custom-index">
+
+<div class="grid grid-chart-weight">
+  <div class="header">
+    <h2>TK TK Interactivo lorem ipsum título</h2>
+    <p>Interacciona con los sliders para customizar el IMCV según tus prioridades. Explora cómo afecta a la puntuación de cada C.A.</p>
+  </div>
+  
+  <div class="sticky menu menu-tendencias">
+    ${weightsInput}
+    ${isSimpleCheckbox}
+  </div>
+
+  <div class="card chart" >
+    <img src="data/images/IMCVKey.png" alt="lol" style="width:100%; height: auto">
+  </div>
+
+  <div class="weights-chart card">
+    ${slopeChart(slopePositions, 800)}
+    ${customIndexChart(imcv, customAmpi, dimensionDiffs, clickedSlider, year, 800, isSimple)} 
+  </div>
+</div>
+
+
+<!--div class="grid grid-custom-index">
   <div  class="header">
     <h2>TK TK Interactivo lorem ipsum título</h2>
     <p> Interacciona con los sliders para customizar el IMCV según tus prioridades. Explora cómo afecta a la puntuación de cada C.A. </p>
@@ -216,27 +239,19 @@ for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
       ${customIndexChart(imcv, customAmpi, dimensionDiffs, clickedSlider, year, 800, isSimple)} 
     </div>
   </div>
-</div>
+</div-->
 
 
 <style>
-  .grid-custom-index {
+
+  .grid-chart-weight {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: auto 1fr;
-    grid-template-areas:
-      "header header header card"
-      "menu chart chart chart"
-  }
-
-  .custom-index-chart {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .responsive-image {
-    max-width: 100%;
-    height: auto;
+    grid-template-areas: 
+      "header header header chart chart"
+      "menu map map map map";
+    gap: 8px;
   }
 
   .grid-charts {
@@ -273,6 +288,13 @@ for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
     gap: 8px; 
+  }
+
+  .weights-chart {
+    grid-area: map;    
+    display: grid;
+    grid-template-columns: 1fr 6fr; 
+
   }
 
   @media (max-width: 1024px) {
