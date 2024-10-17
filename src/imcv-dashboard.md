@@ -52,6 +52,9 @@ const weightsInput = Inputs.form(
     return slider;
   })
 );
+
+weightsInput.classList.add("weight-inputs");
+
 const weights = Generators.input(weightsInput);
 ```
 
@@ -200,18 +203,18 @@ for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
     <p>Interacciona con los sliders para customizar el IMCV según tus prioridades. Explora cómo afecta a la puntuación de cada C.A.</p>
   </div>
   
-  <div class="sticky menu menu-tendencias">
+  <div class="menu menu-tendencias">
     ${weightsInput}
     ${isSimpleCheckbox}
   </div>
 
-  <div class="card chart" >
-    <img src="data/images/IMCVKey.png" alt="lol" style="width:100%; height: auto">
+  <div class="card chart" style="align-self:end" >
+    <img src="data/images/IMCVKey.png" alt="IMCV Legend" style="width:100%; height: auto;  max-width: 500px;">
   </div>
 
   <div class="weights-chart card">
-    ${slopeChart(slopePositions, 800)}
-    ${customIndexChart(imcv, customAmpi, dimensionDiffs, clickedSlider, year, 800, isSimple)} 
+    ${slopeChart(slopePositions, 700)}
+    ${customIndexChart(imcv, customAmpi, dimensionDiffs, clickedSlider, year, 700, isSimple)} 
   </div>
 </div>
 
@@ -247,11 +250,17 @@ for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
   .grid-chart-weight {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto auto 1fr;
     grid-template-areas: 
       "header header header chart chart"
       "menu map map map map";
     gap: 8px;
+  }
+
+  .weight-inputs {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
   }
 
   .grid-charts {
@@ -287,14 +296,37 @@ for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
     grid-area: map;
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
-    gap: 8px; 
+    gap: 2px; 
   }
 
   .weights-chart {
     grid-area: map;    
     display: grid;
     grid-template-columns: 1fr 6fr; 
+  }
 
+  @media (max-width: 1536px) {
+    .weight-inputs {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-chart-weight {
+      grid-template-areas: 
+        "header header chart chart chart"
+        "menu menu menu menu menu"
+        "map map map map map";
+    }  
+  }
+
+  @media (max-width: 1280px) {
+    .grid-chart-weight {
+      grid-template-rows: auto auto auto 1fr;
+      grid-template-areas: 
+        "header header header header header"
+        "chart chart chart chart chart"
+        "menu menu menu menu menu"
+        "map map map map map";
+    } 
   }
 
   @media (max-width: 1024px) {
@@ -316,6 +348,12 @@ for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
     }
     .menu-tendencias {
       height: 300px;
+    }
+  }
+
+  @media (max-width: 850px) {
+    .weight-inputs {
+      grid-template-columns: 1fr;
     }
   }
   
