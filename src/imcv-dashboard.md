@@ -104,7 +104,6 @@ for (const region of ccaaList) {
   customAmpi.push({ ccaa: region, val: weightedAverage });
   selectedYearScores.push({ ccaa: region, val: indexValue });
 }
-console.log(customAmpi)
 ```
 
 ```js
