@@ -40,7 +40,8 @@ export const dimDict = ({
     dim6: "Seguridad física y personal",
     dim7: "Gobernanza y derechos básicos",
     dim8: "Entorno y medioambiente",
-    dim9: "Experiencia general de la vida"
+    dim9: "Experiencia general de la vida",
+    index: "Calidad de vida global"
   });
 
 export const dimDetailDict = ({
