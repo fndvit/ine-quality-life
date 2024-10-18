@@ -13,6 +13,7 @@ import {tilemap} from "./components/tileMap.js";
 
 //if not here not working
 const data = await FileAttachment("data/imcv.json").json();
+const dataDetail = await FileAttachment("data/imcv-detail.json").json();
 
 const yearInput = Inputs.range(d3.extent(imcv.map((d) => d.year)), {
     label: "Selecciona el año",

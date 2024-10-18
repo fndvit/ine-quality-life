@@ -7,6 +7,7 @@ toc: true
 import {data as imcv, ccaaList, ccaaColors, ccaaNameDict, dimList, dimDict, yearTexts} from "./data/consts.js";
 
 const data = await FileAttachment("data/imcv.json").json();
+const dataDetail = await FileAttachment("data/imcv-detail.json").json();
 
 const selectDate = Inputs.select(d3.range(2008, 2023), {multiple: 4, value: d3.range(2008, 2023), label: "Selecciona los años", format: d=> d.toFixed(0)});
 const selectCCAA = Inputs.select(ccaaList, {multiple: 4, value:ccaaList, label: "Selecciona las comunidades autónomas", format: d=> ccaaNameDict[d]});
