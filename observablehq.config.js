@@ -49,7 +49,7 @@ export default {
   </noscript>
   `,
   search: false,
-  dynamicPaths: ccaaPages,
+  dynamicPaths: ccaaPages.map(d=>d.path),
   pages: [
     {name: "El indicador", path: "/imcv-dashboard"},
     {name: "Cómo (y por qué) lo rehicimos", path: "/making-of"},
