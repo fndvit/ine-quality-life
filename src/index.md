@@ -81,9 +81,6 @@ iframe {
 </h2>
 </div>
 
-<!-- <iframe id="iframe" scrolling="no" src="https://sequera.fndvit.org/"></iframe> -->
-
-
 <div class="grid grid-cols-3">
   <div class="card">
     <h2><a href="imcv-dashboard">Panel del índice multidimensional de calidad de vida (IMCV)</a></h2>

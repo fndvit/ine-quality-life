@@ -17,7 +17,7 @@ const dataCCAA = data.filter(d=> d.ccaa === ccaa);
 const dataDetailCCAA = dataDetail.filter(d=> d.ccaa === ccaa);
 
 const filterSub = (dim) => Object.entries(dimDetailDict).filter(([key, value]) => key.startsWith(dim)).map(([key, value]) => key);
-const filterValue = (subdim) => dataDetailCCAA.find(d => d.subdim === subdim).value;
+const filterValue = (subdim) => dataDetailCCAA.find(d => d.subdim === subdim);
 
 const color = d3.scaleOrdinal(dimList, dimColors)
 const stroke = d3.scaleOrdinal(dimList, darkerDimColors)
@@ -32,7 +32,7 @@ const smallCharts = (dim) => html`<div class="grid grid-cols-4">${
           <h3 class="grid-colspan-2">${dimDetailDict[d]}</h3>
           <div class="grid-colspan-1 big-number">
             <h4 class="main-number" style="-webkit-text-stroke-width: .5px;
-  -webkit-text-stroke-color: ${stroke(dim)}; color: ${color(dim)}">${filterValue(d)}</h4>
+  -webkit-text-stroke-color: ${stroke(dim)}; color: ${color(dim)}">${filterValue(d).value}<span class="unit">${filterValue(d).unit}</span></h4>
           </div>
           <div class="grid-colspan-1 big-number">${sparkbar(dataDetail, ccaa, d)}</div>
         </div>`)
@@ -280,7 +280,7 @@ ${smallCharts("dim9")}
     font-size: 0.9rem!important;
     font-weight: normal!important;
     color: var(--theme-foreground)!important;
-    height: 2.8rem;
+    height: 2.5rem;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -297,6 +297,7 @@ ${smallCharts("dim9")}
   .main-number {
     font-size: 1.5rem!important;
     max-height: 2rem!important;
+    margin-top: .5rem;
   }
   .card {
     padding: 1rem !important;
@@ -304,5 +305,9 @@ ${smallCharts("dim9")}
   }
   .small-charts {
     max-height: 6rem;
+  }
+  .unit {
+    font-size: .9rem;
+    padding-left: .1rem;
   }
 </style>

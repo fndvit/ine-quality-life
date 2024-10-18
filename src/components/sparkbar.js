@@ -6,6 +6,8 @@ import {ccaaNameDict, dimColors, dimList, darkerDimColors} from "../data/consts.
 export function sparkbar(data, ccaa, subdim) {
 
   const stroke = d3.scaleOrdinal([...dimList, "gray"], [...darkerDimColors, "#bfb6b8"]);
+  const filteredData = data.filter((d) => d.subdim === subdim);
+  const order = filteredData[0].sign === "pos" ? "ascending" : "descending";
 
   return resize((width) => 
     Plot.plot({
@@ -20,11 +22,11 @@ export function sparkbar(data, ccaa, subdim) {
       },
       marks: [
         Plot.barY(
-          data.filter((d) => d.subdim === subdim),
+          filteredData,
           {
             x: "ccaa",
             y: "value",
-            sort: { x: "y" },
+            sort: {x: "y", order},
             r: 2,
             inset: 1,
             fill: (d) => (d.ccaa === ccaa ? d.dim : "gray"),
