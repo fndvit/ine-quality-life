@@ -14,9 +14,9 @@ sidebar: false
 }
 
 .hero h1 {
-  max-width: 36rem;
+  max-width: 100%;
   padding-bottom: 2rem;
-  font-size: 14vw;
+  font-size: 16vw;
   font-weight: 900;
   line-height: 1;
   background-clip: text;
@@ -64,20 +64,25 @@ iframe {
 
 .endnote {
   font-family: var(--sans-serif);
+  line-height: 1.5rem;
   color: var(--theme-foreground-muted);
 }
 
 @media (min-width: 640px) {
   .hero h1 {
-    font-size: 90px;
+    font-size: 6rem;
+    max-width: 60%;
+  }
+  .hero h2 {
+    max-width: 50%;
   }
 }
 
 </style>
 
 <div class="hero">
-  <h1>Índice de Calidad de Vida (INE)</h1>
-  <h2 style="max-width: 50%;">El IMCV es un indicador experimental desarrollado por el Instituto Nacional de Estadística de España (INE) construido a partir de 60 indicadores específicos agrupados en nueve dimensiones, que ofrece una visión general de la calidad de vida en España.
+  <h1>La calidad de vida en España</h1>
+  <h2>El <strong>Indicador Multidimensional de Calidad de Vida (IMCV)</strong> es un índice compuesto desarrollado por el <strong>Instituto Nacional de Estadística de España (INE)</strong> y construido a partir de 60 variables estadísticas, agrupadas en nueve dimensiones, que ofrece una visión general de la calidad de vida en España.
 </h2>
 </div>
 
@@ -86,7 +91,7 @@ iframe {
 
 <div class="grid grid-cols-3">
   <div class="card">
-    <h2><a href="imcv-dashboard">Panel del índice multidimensional de calidad de vida (IMCV)</a></h2>
+    <h2><a href="imcv-dashboard">Panel de datos del indicador (IMCV)</a></h2>
   </div>
   <div class="card">
     <h2><a href="making-of">Cómo (y por qué) lo rehicimos</a></h2>
@@ -97,4 +102,4 @@ iframe {
 </div>
 
 --- 
-<p class="endnote">TK TK TK TK <a href="mailto:karma@fundaciovit.org">karma@fundaciovit.org</a>.</p>
+<p class="endnote"><strong>La visualización puede revolucionar la difusión de los datos abiertos y revitalizar la transparencia.</strong> Si queréis colaborar con nosotros, o vuestra empresa u organización quiere patrocinar la iniciativa, o queréis apoyar nuestra misión de otra forma, poneos en contacto con <a href="mailto:karma@fundaciovit.org">karma@fundaciovit.org</a>.</p>
