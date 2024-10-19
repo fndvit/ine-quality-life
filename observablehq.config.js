@@ -1,16 +1,16 @@
 export default {
-  title: "Índice de Calidad de Vida (INE)",
+  title: "Indicador Multidimensional de Calidad de Vida (INE)",
   head: `
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Índice de Calidad de Vida (INE)</title>
+  <title>Indicador Multidimensional de Calidad de Vida (INE)</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta name="author" content="Fundació ViT, Visualització per a la Transparència">
   <meta property="og:title" content="">
   <meta property="og:description" content="">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://imcv-ine.fndvit.org/">
+  <meta property="og:url" content="https://imcv.fndvit.org/">
   <meta property="og:image" content="/docs/img/social.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="">
@@ -69,7 +69,7 @@ export default {
     <div style="display: flex; flex-grow: 1; justify-content: space-between; align-items: center;">
       <b>
         <a href="" target="_self" rel="">
-        Índice de Calidad de Vida (INE)
+        Indicador Multidimensional de Calidad de Vida (INE)
         </a>
       </b>
       <span style="display: flex; align-items: baseline; gap: 0.5rem; font-size: 13px;">
