@@ -80,6 +80,11 @@ p {
   line-height: 1.75rem;
 }
 
+li {
+  font-size: 1rem;
+  line-height: 1.75rem;
+}
+
 .sticky {
   position: sticky;
   top: 1rem;
@@ -133,7 +138,6 @@ input[type='checkbox'] {
     fill-opacity: .9;
     filter: drop-shadow(0 .1rem .4rem rgba(0,0,0,.18));
   }
-
 }
 
 #observablehq-main, #observablehq-header, #observablehq-footer {
