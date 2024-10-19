@@ -91,6 +91,8 @@ En nuestra versión hemos movido el segundo panel —en el que puedes manipular 
 ## También **nos chiflan** los mosaicos
 Nuestra vista general es ligeramente diferente, con la parte superior dispuesta geográficamente en lugar de ordenada por valores como en el panel original. Geográficamente es impreciso. En realidad lo que hemos diseñado es un mosaico, un dispositivo visual fascinante y una [obsesión nuestra](https://github.com/fndvit/barfi).
 
+Este es uno de la docena de mosaicos que diseñamos para el [*Air Pollution Note*](https://www.unep.org/interactives/air-pollution-note/) y el *Climate Action Note* durante nuestra colaboración con el Programa de las Naciones Unidas para el Medio Ambiente.
+
 <div class="figure-container">
   <figure>
     <script async src='https://www.unep.org/interactives/air-pollution-note/embed.js' data-embed='policies'></script>
@@ -98,7 +100,7 @@ Nuestra vista general es ligeramente diferente, con la parte superior dispuesta 
   </figure>
 </div>
 
-Para este mapa, creamos múltiples iteraciones del mosaico manualmente y de manera programática, y verificamos los límites en el mosaico con los límites geográficos reales. El mosaico de arriba es el más preciso, es decir, el que tenía más límites correctos. Cuatro no aparecen: Castilla y León con Galicia, Aragón y Navarra, y Castilla-La Mancha con Extremadura; y tiene 10 límites que no existen en realidad.
+Para este mapa, creamos múltiples iteraciones del mosaico manualmente y de manera programática, y verificamos las fronteras en el mosaico con las fronteras geográficos reales. El mosaico de arriba es el más preciso, es decir, el que tenía más fronteras correctas. Cuatro no aparecen: Castilla y León con Galicia, Aragón y Navarra, y Castilla-La Mancha con Extremadura; y tiene 10 lindes que no existen en realidad.
 
 <div class="figure-container" >
   <figure>
