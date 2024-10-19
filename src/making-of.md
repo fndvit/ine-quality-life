@@ -8,6 +8,13 @@ Como viene siendo habitual cuando reimaginamos [otras aplicaciones de datos púb
 
 Y al igual que con nuestra iniciativa **[Catalunya en Dades](https://catalunya-en-dades.fndvit.org/)**, utilizamos [Observable, un generador de sitios estáticos gratuito y de código abierto](https://github.com/observablehq/framework) para aplicaciones de datos, en lugar de productos de software comerciales como _Tableau_ (la herramienta utilizada por el INE en este caso) o _Power BI_ (la herramienta utilizada por la administración catalana).
 
+Permitidnos insistir: **nosotros no hemos desarrollado este indicador, es del INE**. Sólo hemos reimaginado aspectos de su presentación visual y las tecnologías utilizadas en su diseminación:
+- Aquí podrás encontrar más [**sobre el proyecto**](https://www.ine.es/ss/Satellite?L=es_ES&c=INEPublicacion_C&cid=1259947308577&p=1254735110672&pagename=ProductosYServicios%2FPYSLayout&param1=PYSDetalleGratuitas) y lo que se calcula en cada dimensión del indicador.
+- Muy útil también, el [**informe metodológico estandarizado**](https://www.ine.es/dynt3/metadatos/es/RespuestaDatos.htm?oe=30471).
+- Y el [**panel de datos original**](https://www.ine.es/experimental/imcv/experimental_ind_multi_calidad_vida.htm).
+
+Otros trabajos nuestros, como el *Índice de Vulnerabilidad Social* (en desarrollo), sí que son proyectos de análisis estadístico de la sociedad  propios de la Fundació ViT. Pero este no es el caso.
+
 ---
 ## **Nos chiflan** las flores
 La visualización principal es un puñado de **flores multicolores**, una para cada comunidad autónoma. En cada flor, cada pétalo representa una de las nueve dimensiones del índice y la longitud —y grosor— de cada pétalo representa el valor de esa dimensión en la región.
@@ -18,7 +25,11 @@ No hemos _rediseñado_ la visualización de flor; solo la hemos limpiado, manten
 
 ---
 ## La estructura
-El producto original del INE tiene dos partes: el panel donde se muestran los datos por dimensiones y comunidades autónomas en forma de flores y su evolución temporal; y otro panel donde puedes modificar cúanto influye de cada dimensión en el índice y así personalizar el indicador. En nuestra versión hemos movido el segundo panel —en el que puedes manipular el peso de cada dimensión— a la parte inferior de la aplicación, para que puedas jugar con él en la misma página.
+El producto original del INE tiene dos partes: 
+- el panel donde se muestran los datos por dimensiones y comunidades autónomas en forma de flores y su evolución temporal;
+- y otro panel donde puedes modificar cúanto influye de cada dimensión en el índice y así personalizar el indicador.
+
+En nuestra versión hemos movido el segundo panel —en el que puedes manipular el peso de cada dimensión— a la parte inferior de la aplicación, para que puedas jugar con él en la misma página.
 
 ---
 ## También **nos chiflan** los mosaicos
@@ -42,7 +53,7 @@ El INE creó también un segundo panel, que trasladamos a la parte inferior de n
 
 La visualización original es un gráfico de barras con las barras que reaccionan a los cambios en los pesos, y puntos rojos como recordatorio visual del índice original.
 
-Esta es la única visualización que hemos rediseñado. En lugar de los gráficos de barras originales, hemos concebido un dispositivo visual más rico:
+Esta es **la única visualización que hemos rediseñado**. En lugar de los gráficos de barras originales, hemos concebido un dispositivo visual más rico:
 - Añadimos en pequeño los valores de cada dimensión,
 - la diferencia entre el indicador personalizado y el original,
 - un gráfico de pendiente con la clasificación original y la de tu personalización,
@@ -50,8 +61,9 @@ Esta es la única visualización que hemos rediseñado. En lugar de los gráfico
 
 ---
 ## Trabajo futuro
-Algunas cosas que nos gustaría considerar:
+Algunas cosas que nos gustaría considerar, por orden de prioridad:
 
-- Crear diferentes formas para los pétalos basadas en la diferencia positiva o negativa respecto a la media _a la_ [Film Flowers (de Shirley Wu)](https://shirleywu.studio/filmflowers/) para resaltar la diferencia entre flores.
-- Probar visualizaciones de tendencias alternativas.
-- Añadir páginas para cada comunidad autónoma, similar al [índice de la OCDE](https://www.oecdbetterlifeindex.org/countries/poland/).
+- Añadir **más frases analíticas basadas en datos** (de las subdimensiones) a las páginas de cada comunidad autónoma, similar al [índice de la OCDE](https://www.oecdbetterlifeindex.org/countries/poland/).
+- Probar visualizaciones de **tendencias** alternativas.
+- Crear **diferentes formas para los pétalos** basadas en la diferencia positiva o negativa respecto a la media _a la_ [Film Flowers (de Shirley Wu)](https://shirleywu.studio/filmflowers/) para resaltar la diferencia entre flores.
+- Mejorar la usabilidad y la **experiencia**.
