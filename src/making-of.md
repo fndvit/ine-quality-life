@@ -41,14 +41,14 @@ Está basado en una visualización de 2013 del [Índice de Mejor Vida de la OCDE
 
 <div class="figure-container">
   <figure>
-    <img src="img/oecd.PNG" alt="Pantallazo de la visualización de las flores utilizada en el Better Life Index de la OECD" />
+    <img src="img/oecd.png" alt="Captura de pantalla de la visualización de las flores utilizada en el Better Life Index de la OECD" />
     <figcaption>Visualización del Índice para una Vida Mejor de la OCDE (2013).</figcaption>
   </figure>
 </div>
 
 <div class="figure-container">
   <figure>
-    <img src="img/imcv.PNG" alt="Pantallazo de la visualización de las flores utilizada en el IMCV original" />
+    <img src="img/imcv.PNG" alt="Captura de pantalla de la visualización de las flores utilizada en el IMCV original" />
     <figcaption>Visualización del IMCV del INE utilizando Tableau</figcaption>
   </figure>
 </div>
@@ -57,7 +57,7 @@ No hemos _rediseñado_ la visualización de flor; solo la hemos limpiado, manten
 
 <div class="figure-container">
   <figure>
-    <div class="card center chart" style="margin: 0; max-width: 400px" >
+    <div class="card center chart" style="margin: 0; max-width: 320px">
       ${
       flowerChart(
         imcv,
@@ -78,6 +78,13 @@ El producto original del INE tiene dos partes:
 - el panel donde se muestran los datos por dimensiones y comunidades autónomas en forma de flores y su evolución temporal;
 - y otro panel donde puedes modificar cúanto influye de cada dimensión en el índice y así personalizar el indicador.
 
+<div class="figure-container" style="max-width:640px">
+  <figure>
+    <img src="img/structure.png" alt="Esquema de la estructura de nuestro rediseño" />
+    <figcaption>Esquema de la estructura de nuestro rediseño.</figcaption>
+  </figure>
+</div>
+
 En nuestra versión hemos movido el segundo panel —en el que puedes manipular el peso de cada dimensión— a la parte inferior de la aplicación, para que puedas jugar con él en la misma página.
 
 ---
@@ -87,6 +94,7 @@ Nuestra vista general es ligeramente diferente, con la parte superior dispuesta 
 <div class="figure-container">
   <figure>
     <script async src='https://www.unep.org/interactives/air-pollution-note/embed.js' data-embed='policies'></script>
+    <figcaption>Mosaico que diseñamos para el Air Pollution Note del Programa de las Naciones Unidas para el Medio Ambiente (UNEP).</figcaption>
   </figure>
 </div>
 
@@ -111,8 +119,8 @@ Ajustamos [el código de la leyenda interactiva de Toph Tucker](https://observab
 
 <div class="figure-container">
   <figure>
-    <div class="card chart" style="max-width: 400px" >
-        ${lineChart(imcv, ccaaList, "dim1", 600, 240, "year", "val", "ccaa")}
+    <div class="card chart" style="max-width: 320px" >
+        ${lineChart(imcv, ccaaList, "dim1", 320, 320, "year", "val", "ccaa")}
     </div>
     <figcaption>Visualización de tendencias que presenta el llamado efecto del suéter multicolor.</figcaption>
   </figure>
