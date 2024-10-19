@@ -48,7 +48,7 @@ Está basado en una visualización de 2013 del [Índice de Mejor Vida de la OCDE
 
 <div class="figure-container">
   <figure>
-    <img src="img/imcv.PNG" alt="Captura de pantalla de la visualización de las flores utilizada en el IMCV original" />
+    <img src="img/imcv.png" alt="Captura de pantalla de la visualización de las flores utilizada en el IMCV original" />
     <figcaption>Visualización del IMCV del INE utilizando Tableau</figcaption>
   </figure>
 </div>
