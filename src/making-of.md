@@ -26,7 +26,7 @@ Y al igual que con nuestra iniciativa **[Catalunya en Dades](https://catalunya-e
   </figure>
 </div>
 
-Permitidnos insistir: **nosotros no hemos desarrollado este indicador, es del INE**. Sólo hemos reimaginado aspectos de su presentación visual y las tecnologías utilizadas en su diseminación:
+Permitidnos insistir: **nosotros no hemos desarrollado este indicador, es del INE**. Sólo hemos reimaginado aspectos de su presentación visual y las tecnologías utilizadas en su diseminación. Para más información:
 - Aquí podrás encontrar más [**sobre el proyecto**](https://www.ine.es/ss/Satellite?L=es_ES&c=INEPublicacion_C&cid=1259947308577&p=1254735110672&pagename=ProductosYServicios%2FPYSLayout&param1=PYSDetalleGratuitas) y lo que se calcula en cada dimensión del indicador.
 - Muy útil también, el [**informe metodológico estandarizado**](https://www.ine.es/dynt3/metadatos/es/RespuestaDatos.htm?oe=30471).
 - Y el [**panel de datos original**](https://www.ine.es/experimental/imcv/experimental_ind_multi_calidad_vida.htm).
@@ -35,7 +35,7 @@ Otros trabajos nuestros, como el *Índice de Vulnerabilidad Social* (en desarrol
 
 ---
 ## **Nos chiflan** las flores
-La visualización principal es un puñado de **flores multicolores**, una para cada comunidad autónoma. En cada flor, cada pétalo representa una de las nueve dimensiones del índice y la longitud —y grosor— de cada pétalo representa el valor de esa dimensión en la región.
+La **visualización principal del panel de datos del INE** es un puñado de **flores multicolores**, una para cada comunidad autónoma. En cada flor, cada pétalo representa una de las nueve dimensiones del índice y la longitud —y grosor— de cada pétalo representa el valor de esa dimensión en la región.
 
 Está basado en una visualización de 2013 del [Índice de Mejor Vida de la OCDE](https://www.oecdbetterlifeindex.org/), realizada por [Moritz Stefaner en colaboración con Raureif y Dominikus Baur](https://truth-and-beauty.net/projects/oecd-better-life-index). (El concepto del índice en sí está igualmente inspirado en el [índice de la OCDE y otros proyectos similares](https://ine.es/experimental/imcv/exp_calidad_vida_multi.pdf)).
 
@@ -53,7 +53,7 @@ Está basado en una visualización de 2013 del [Índice de Mejor Vida de la OCDE
   </figure>
 </div>
 
-No hemos _rediseñado_ la visualización de flor; solo la hemos limpiado, manteniendo la forma básica. Dado que estamos usando D3 en lugar de Tableau, lo que usó el INE originalmente, tenemos un control más preciso sobre la estética de las figuras.
+No hemos _rediseñado_ la visualización de flor; solo la hemos limpiado, manteniendo la forma básica. Dado que estamos usando D3 en lugar de _Tableau_, lo que usó el INE originalmente, tenemos un control más preciso sobre la estética de las figuras.
 
 <div class="figure-container">
   <figure>
@@ -74,7 +74,7 @@ No hemos _rediseñado_ la visualización de flor; solo la hemos limpiado, manten
 
 ---
 ## La estructura
-El producto original del INE tiene dos partes: 
+El **producto original del INE** tiene dos partes: 
 - el panel donde se muestran los datos por dimensiones y comunidades autónomas en forma de flores y su evolución temporal;
 - y otro panel donde puedes modificar cúanto influye de cada dimensión en el índice y así personalizar el indicador.
 
@@ -85,13 +85,13 @@ El producto original del INE tiene dos partes:
   </figure>
 </div>
 
-En nuestra versión hemos movido el segundo panel —en el que puedes manipular el peso de cada dimensión— a la parte inferior de la aplicación, para que puedas jugar con él en la misma página.
+En **nuestra versión** hemos movido el segundo panel —en el que puedes manipular el peso de cada dimensión— a la parte inferior de la aplicación, para que puedas jugar con él en la misma página.
 
 ---
 ## También **nos chiflan** los mosaicos
-Nuestra vista general es ligeramente diferente, con la parte superior dispuesta geográficamente en lugar de ordenada por valores como en el panel original. Geográficamente es impreciso. En realidad lo que hemos diseñado es un mosaico, un dispositivo visual fascinante y una [obsesión nuestra](https://github.com/fndvit/barfi).
+Nuestra vista general es ligeramente diferente, con la parte superior dispuesta geográficamente en lugar de ordenada por valores como en el panel original. Bueno ... decir *geográficamente* es un poquito impreciso. En realidad lo que hemos diseñado es un mosaico, un dispositivo visual fascinante y una [obsesión nuestra](https://github.com/fndvit/barfi).
 
-Este es uno de la docena de mosaicos que diseñamos para el [*Air Pollution Note*](https://www.unep.org/interactives/air-pollution-note/) y el *Climate Action Note* durante nuestra colaboración con el Programa de las Naciones Unidas para el Medio Ambiente.
+Este de aquí abajo es uno de la docena de mosaicos que diseñamos para el [*Air Pollution Note*](https://www.unep.org/interactives/air-pollution-note/) y el *Climate Action Note* durante nuestra colaboración con el Programa de las Naciones Unidas para el Medio Ambiente.
 
 <div class="figure-container">
   <figure>
@@ -133,10 +133,17 @@ En cuanto a los colores de las comunidades, teníamos dos opciones: utilizar una
 Otra opción hubiera sido un input de tipo `Select` y una `Plot.legend` separada que solo muestre las regiones seleccionadas, pero creemos que la opción anterior es más fácil de usar.
 
 ---
-## Crea tu propio Índice de Calidad de Vida
+## Crea tu propio Indicador de Calidad de Vida
 El INE creó también un segundo panel, que trasladamos a la parte inferior de nuestra aplicación de datos en lugar de mantenerlo separado. En él, como hemos explicado, puedes cambiar el peso de las diferentes dimensiones del índice, dando más o menos importancia a los diferentes aspectos.
 
 La visualización original es un gráfico de barras con las barras que reaccionan a los cambios en los pesos, y puntos rojos como recordatorio visual del índice original.
+
+<div class="figure-container">
+  <figure>
+    <img src="img/custom.png" alt="Interactivo original del INE para personalizar el indicador" />
+    <figcaption>Interactivo original del INE para personalizar el indicador.</figcaption>
+  </figure>
+</div>
 
 Esta es **la única visualización que hemos rediseñado**. En lugar de los gráficos de barras originales, hemos concebido un dispositivo visual más rico:
 - Añadimos en pequeño los valores de cada dimensión,

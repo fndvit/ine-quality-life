@@ -89,7 +89,7 @@ En esta sección puedes **filtrar los datos** que visualizamos en el [panel](imc
 ${filterInput}
 ${resetFiltersButton}
 
-Estos son **los datos que has seleccionado**. La estructura de la tabla es *[apilada](https://en.wikipedia.org/wiki/Wide_and_narrow_data)*, ciertamente menos legible para los humanos, pero más práctica para trabajar programáticamente.
+Estos son **los datos que has seleccionado**. La estructura de la tabla es [*apilada*](https://en.wikipedia.org/wiki/Wide_and_narrow_data), ciertamente menos legible para los humanos, pero más práctica para trabajar programáticamente.
 
 <div class="grid">
 ${table}
