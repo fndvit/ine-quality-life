@@ -59,7 +59,7 @@ const ccaa = Generators.input(ccaaInput);
 <div class="grid grid-charts">
   <div class="header">
     <h2>¿Cómo han evolucionado las dimensiones del indicador?</h2>
-    <p>En estos gráficos puedes explorar la tendencia de cada comunidad autónoma y cada dimensión. La única dimensión que crece de manera relativamente consistente es Educación. Las más cambiantes son Trabajo —especialmente en momentos de crisis, Salud —muy variable de año en año, y Condiciones materiales de vida, Seguridad física y personal y Entorno y medioambiente con variaciones significativas entre años y entre comunidades autónomas. En contraste, Gobernanza y derechos básicos, Ocio y relaciones sociales< y Experiencia general de la vida se mantienen con fluctuaciones mínimas.</p>
+    <p>En estos gráficos puedes explorar la tendencia de cada comunidad autónoma y cada dimensión. La única dimensión que crece de manera relativamente consistente es Educación. Las más cambiantes son Trabajo —especialmente en momentos de crisis, Salud —muy variable de año en año, y Condiciones materiales de vida, Seguridad física y personal y Entorno y medioambiente con variaciones significativas entre años y entre comunidades autónomas. En contraste, Gobernanza y derechos básicos, Ocio y relaciones sociales y Experiencia general de la vida se mantienen con fluctuaciones mínimas.</p>
   </div>
   
   <div class="sticky menu menu-tendencias">
@@ -68,7 +68,7 @@ const ccaa = Generators.input(ccaaInput);
   </div>
 
   <div class="card chart">
-     <h3>Evolución del índice</h3>
+     <h3>Evolución del indicador</h3>
       ${lineChart(imcv, ccaa, "index", width, 240, "year", "val", "ccaa")}
   </div>
 

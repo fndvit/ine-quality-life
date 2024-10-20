@@ -57,15 +57,15 @@ No hemos _rediseñado_ la visualización de flor; solo la hemos limpiado, manten
 
 <div class="figure-container">
   <figure>
-    <div class="card center chart" style="margin: 0; max-width: 320px">
+    <div class="card center chart" style="margin: 0; max-width: 640px">
       ${
       flowerChart(
         imcv,
-        "Asturias, Principado de",
+        "Galicia",
         2022,
         "val", 
         "dim",
-        width > 600 ? width / 12 : width / 6)
+        width > 600 ? width / 8 : width / 4)
       }
     </div>
     <figcaption>Nuestra propuesta de visualización.</figcaption>
@@ -152,10 +152,14 @@ Esta es **la única visualización que hemos rediseñado**. En lugar de los grá
 - y unas "gomas" para que veas cuánto tira cada dimensión del nuevo promedio, de tu indicador personalizado.
 
 ---
+## La calidad de vida por autonomías
+La otra diferencia grande con la presentación del INE, son las páginas por autonomías. Desde la [`v1.11.0`](https://github.com/observablehq/framework/releases/tag/v1.11.0), Observable Framework permite [rutas dinámicas](https://observablehq.com/framework/params) y `page loaders`. Es una de las últimas incorporaciones a nuestro _remake_ y es todavía un prototipo, inspirado en el [índice de la OCDE](https://www.oecdbetterlifeindex.org/countries/poland/). Como véis en el apartado de trabajo futuro, el plan es ampliarlo con más y mejor análisis de las variables estadísticas de detalle. 
+
+---
 ## Trabajo futuro
 Algunas cosas que nos gustaría considerar, por orden de prioridad:
 
-- Añadir **más frases analíticas basadas en datos** (de las subdimensiones) a las páginas de cada comunidad autónoma, similar al [índice de la OCDE](https://www.oecdbetterlifeindex.org/countries/poland/).
+- Añadir **más frases analíticas basadas en datos** (de las subdimensiones) a las páginas de cada comunidad autónoma.
 - Probar visualizaciones de **tendencias** alternativas.
 - Crear **diferentes formas para los pétalos** basadas en la diferencia positiva o negativa respecto a la media _a la_ [Film Flowers (de Shirley Wu)](https://shirleywu.studio/filmflowers/) para resaltar la diferencia entre flores.
 - Mejorar la usabilidad y la **experiencia**.
