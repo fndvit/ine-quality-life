@@ -86,9 +86,6 @@ iframe {
 </h2>
 </div>
 
-<!-- <iframe id="iframe" scrolling="no" src="https://sequera.fndvit.org/"></iframe> -->
-
-
 <div class="grid grid-cols-3">
   <div class="card">
     <h2><a href="imcv-dashboard">Panel de datos del indicador (IMCV)</a></h2>
