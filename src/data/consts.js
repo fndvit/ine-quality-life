@@ -1,6 +1,8 @@
 import {FileAttachment} from "observablehq:stdlib";
+import chroma from "npm:chroma-js";
 
-export const data = await FileAttachment("data/imcv.json").json();
+export const data = await FileAttachment("../data/imcv.json").json();
+export const dataDetail = await FileAttachment("../data/imcv-detail.json").json();
 
 export const dimColors = ["#3b5fc0","#ffd754","#c7c1bf","#a160af","#ff9c38","#5ca34b","#f794b9","#61b0ff","#ed393f"];
 
@@ -50,8 +52,68 @@ export const dimDict = ({
     dim6: "Seguridad física y personal",
     dim7: "Gobernanza y derechos básicos",
     dim8: "Entorno y medioambiente",
-    dim9: "Experiencia general de la vida"
+    dim9: "Experiencia general de la vida",
+    index: "Calidad de vida global"
   });
+
+export const dimDetailDict = ({
+  "dim1.1.1": "Renta mediana",
+  "dim1.1.2": "Población en riesgo de pobreza relativa",
+  "dim1.1.4": "Desigualdad (cociente S80/S20)",
+  "dim1.1.5": "Satisfacción alta o muy alta con la situación económica del hogar",
+  "dim1.2.1": "Dificultades medias o altas para llegar a fin de mes",
+  "dim1.2.2": "Carencia material severa",
+  "dim1.2.3": "Población que vive en hogares con determinadas deficiencias en la vivienda",
+  "dim1.2.4": "Población con falta de espacio en la vivienda",
+  "dim1.2.5": "Población con gasto elevado en vivienda",
+  "dim1.2.6": "Satisfacción alta o muy alta con la vivienda",
+  "dim1.3.2": "Incapacidad de hacer frente a gastos económicos imprevistos",
+  "dim1.3.3": "Retrasos en los pagos",
+  "dim2.1.1": "Tasa de empleo",
+  "dim2.1.2": "Tasa de paro",
+  "dim2.1.3": "Tasa de paro de larga duración",
+  "dim2.1.4": "Empleo involuntario a tiempo parcial.",
+  "dim2.2.1": "Salarios bajos",
+  "dim2.2.2": "Jornadas largas y muy largas.",
+  "dim2.2.3": "Trabajo temporal",
+  "dim2.2.4": "Satisfacción alta o muy alta con el trabajo",
+  "dim3.1.1": "Esperanza de vida al nacer",
+  "dim3.1.3": "Salud autopercibida buena o muy buena",
+  "dim3.1.4": "Morbilidad crónica",
+  "dim3.1.5": "Personas con limitaciones en la actividad diaria en los últimos 6 meses",
+  "dim3.2.1": "Necesidades no satisfechas de cuidados médicos",
+  "dim3.3.1": "Índice de masa corporal (de sobrepeso y obesidad)",
+  "dim3.3.2": "Fumadores diarios",
+  "dim3.3.3": "Ejercicio físico regular",
+  "dim4.1.1": "Poblacion con nivel superior (5-8)",
+  "dim4.1.2": "Poblacion adulta (de 25 a 64 años) con nivel superior (5-8)",
+  "dim4.1.3": "Poblacion joven (de 18 a 24 años) con nivel superior (5-8)",
+  "dim4.1.4": "Abandono temprano de la educación-formación en la población de 18 a 24 años",
+  "dim4.2.1": "Personas de 25 a 64 años que han recibido formación durante las últimas 4 semanas",
+  "dim5.1.1": "Satisfacción alta o muy alta con el tiempo disponible",
+  "dim5.1.2": "Asistencia a eventos culturales y deportivos",
+  "dim5.2.1": "Frecuencia alta de las reuniones con amigos",
+  "dim5.2.2": "Satisfacción alta o muy alta con las relaciones personales",
+  "dim5.2.3": "Tener familiares, amigos o vecinos a los que pedir ayuda",
+  "dim5.2.4": "Tener alguien con quien hablar de temas personales",
+  "dim5.2.5": "Confianza alta o muy alta en los demás",
+  "dim6.1.1": "Tasa de homicidios",
+  "dim6.1.2": "Tasa de criminalidad",
+  "dim6.1.3": "Percepción de crimen, violencia, vandalismo en la zona",
+  "dim6.1.4": "Percepción de (bastante o mucha) seguridad",
+  "dim7.1.1": "Confianza alta o muy alta en el sistema político",
+  "dim7.1.2": "Confianza alta o muy alta en el sistema judicial",
+  "dim7.1.3": "Confianza alta o muy alta en la policía",
+  "dim7.2.1": "Participación en actividades políticas",
+  "dim8.1.1": "Población que sufre problemas de contaminación y otros problemas ambientales",
+  "dim8.1.2": "Población que sufre problemas de ruidos producidos por vecinos o del exterior",
+  "dim8.1.3": "Media ponderada con la población de la concentración media anual de PM10 en municipios con más de 50.000 habitantes",
+  "dim8.2.1": "Satisfacción alta o muy alta con las zonas verdes y áreas recreativas",
+  "dim8.3.1": "Satisfacción alta o muy alta con el entorno en el que vive",
+  "dim9.1.1": "Satisfacción global con la vida",
+  "dim9.2.1": "Sentimientos positivos",
+  "dim9.3.1": "Evaluación del sentido y propósito de la vida"
+})
 
   export const yearTexts = (
     {
@@ -74,7 +136,7 @@ export const dimDict = ({
 )
   
 export const dimList = [...new Set(data.map((d) => d.dim))].filter((dim) => dim.startsWith("dim"));
-
+export const darkerDimColors = dimColors.map(d => chroma(d).darken(2).hex())
 
 export const ccaaNameDict = {
     "Total": "Total",
