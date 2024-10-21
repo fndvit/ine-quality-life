@@ -12,6 +12,7 @@ import {tilemap} from "./components/tileMap.js";
 
 //if not here not working
 const data = await FileAttachment("data/imcv.json").json();
+const detailData = await FileAttachment("data/imcv-detail.json").json();
 ```
 
 # Cómo (y por qué) rehicimos el indicador del INE
