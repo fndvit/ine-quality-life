@@ -59,7 +59,7 @@ const weights = Generators.input(weightsInput);
 ```
 
 ```js
-const isSimpleCheckbox = Inputs.radio([true, false], {label: "Show", value: false, format: (x) => x === true ? "Simple view" : "Detailed view"});
+const isSimpleCheckbox = Inputs.radio([true, false], {label: "Show", value: false, format: (x) => x === true ? "Vista simple" : "Vista completa"});
 
 const isSimple = Generators.input(isSimpleCheckbox);
 ```
@@ -199,8 +199,8 @@ for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
 
 <div class="grid grid-chart-weight">
   <div class="header">
-    <h2>TK TK Interactivo lorem ipsum título</h2>
-    <p>Interacciona con los sliders para customizar el IMCV según tus prioridades. Explora cómo afecta a la puntuación de cada C.A.</p>
+    <h2>Personaliza tu Índice de Calidad de Vida</h2>
+    <p>Este gráfico muestra el ranking, de mayor a menor, de comunidades autónomas en cuanto al IMCV. Al interactuar con los sliders podemos modificar, según nuestras prioridades, el peso que queremos darle a las dimensiones que forman el índice, y observar cómo afecta a la puntuación de cada comunidad autónoma. Con la 'Vista completa' activada, al modificar el peso de una dimensión, podemos ver la distancia a la que se encuentra del índice personalizado y, por lo tanto, cuánto más 'tira' de él. </p>
   </div>
   
   <div class="sticky menu menu-dimensiones">
@@ -209,7 +209,7 @@ for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
   </div>
 
   <div class="card image-chart" >
-    <img src="data/images/IMCVKey.png" alt="IMCV Legend" style="width:100%; height: auto;  max-width: 500px;">
+    <img src="data/images/IMCVKey.png" alt="IMCV Legend">
   </div>
 
   <div class="weights-chart card">
@@ -301,6 +301,13 @@ for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
     grid-area:chart;
     align-self:end;
     justify-self:end;
+  }
+
+  .image-chart img {
+    width: 100%;
+    height: auto;
+    max-width: 700px;
+    image-rendering: auto;
   }
 
   .map {
