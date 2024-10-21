@@ -68,23 +68,29 @@ iframe {
   color: var(--theme-foreground-muted);
 }
 
+.hero-wrapper {
+  display: block;
+}
+
 @media (min-width: 640px) {
   .hero h1 {
     font-size: 6rem;
-    max-width: 60%;
   }
-  .hero h2 {
-    max-width: 50%;
+  .hero-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    align-items: end;
   }
 }
 
 </style>
 
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: end">
+<div class="hero-wrapper">
   <div class="hero">
     <h1>La calidad de vida en España</h1>
-    <h2>El <strong>Indicador Multidimensional de Calidad de Vida (IMCV)</strong> es un índice compuesto desarrollado por el <strong>Instituto Nacional de Estadística de España (INE)</strong> y construido a partir de 60 variables estadísticas, agrupadas en nueve dimensiones, que ofrece una visión general de la calidad de vida en España.
-  </h2>
+    <h2>El <strong>Indicador Multidimensional de Calidad de Vida (IMCV)</strong> es un índice compuesto desarrollado por el <strong>Instituto Nacional de Estadística de España (INE)</strong> y construido a partir de 60 variables estadísticas, agrupadas en nueve dimensiones, que ofrece una visión general de la calidad de vida en España.</h2>
+  </div>
   <img alt="flowers background" style="max-width: 100%; height: auto; margin-bottom: 4rem" src="./flowersBG.png" >
 
 </div>
