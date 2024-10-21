@@ -1,12 +1,24 @@
 # Remake del 'Índice Multidimensional de Calidad de Vida' del INE
 
-TK TK Imágenes
+![Panel Screenshot](inescreengrab.png)
 
-TK TK Explicación
 
----
+Este panel de datos reimagina la visualización del[ Indicador Multidimensional de Calidad de Vida (IMCV)](https://www.ine.es/experimental/imcv/experimental_ind_multi_calidad_vida.htm " Indicador Multidimensional de Calidad de Vida (IMCV)"). El IMCV es un indicador experimental desarrollado por el Instituto Nacional de Estadística (INE) de España, compuesto por 60 indicadores específicos agrupados en nueve dimensiones, que ofrece una perspectiva amplia sobre la calidad de vida en España.
 
-## Cómo iniciar el proyecto
+>**Importante**: no hemos desarrollado este indicador, pertenece al INE. Solo hemos reimaginado aspectos de su presentación visual y las tecnologías utilizadas en su difusión. Para más información sobre el proyecto original:
+
+- [Detalles y cálculo en cada dimensión del indicador](https://www.ine.es/experimental/imcv/exp_calidad_vida_multi.pdf "Detalles y cálculo en cada dimensión del indicador").
+- [Informe de metodología estandarizada](https://www.ine.es/dynt3/metadatos/es/RespuestaDatos.htm?oe=30471 "Informe de metodología estandarizada").
+- [El panel de datos original](https://public.tableau.com/views/IMCV_ccaaES/Dashboard2?:showVizHome=no&:embed=true#3 "El panel de datos original").
+
+
+## Construido con
+En nuestra propuesta, celebramos el uso de datos abiertos obtenidos del INE y, al igual que en nuestra iniciativa [Catalunya en Dades](https://catalunya-en-dades.fndvit.org/  "Catalunya en Dades"), utilizamos [Observable Framework](https://github.com/observablehq/framework "Observable Framework"), un generador de sitios estáticos gratuito y de código abierto para aplicaciones de datos, en lugar de productos de software comerciales como Tableau (la herramienta usada por el INE en este caso) o Power BI (la herramienta usada por la administración catalana).
+
+## Sitio web
+[Indicador Multidimensional de Calidad de Vida (INE)](https://ine-quality-life.vercel.app/)
+
+### Cómo empezar
 
 Esta aplicación es un proyecto de [*Observable Framework*](https://observablehq.com/framework). Para iniciar el servidor local y verla, ejecuta:
 
@@ -51,7 +63,7 @@ Para más información, consulta <https://observablehq.com/framework/getting-sta
 
 **`observablehq.config.js`** - Este es el archivo de [configuración de la aplicación](https://observablehq.com/framework/config), donde se definen las páginas y secciones en la navegación lateral, así como el título de la aplicación.
 
-## Referencia de comandos
+### Referencia de comandos
 
 | Comando              | Descripción                                              |
 | -------------------- | -------------------------------------------------------- |
@@ -61,3 +73,17 @@ Para más información, consulta <https://observablehq.com/framework/getting-sta
 | `npm run deploy`     | Desplegar tu aplicación en Observable                    |
 | `npm run clean`      | Limpiar la caché local del cargador de datos             |
 | `npm run observable` | Ejecutar comandos como `observable help`                 |
+
+Cómo empezar
+This data dashboard reimagines the visualization of the [Multidimensional Quality of Life Indicator (MQLI )](https://www.ine.es/experimental/imcv/experimental_ind_multi_calidad_vida.htm "Multidimensional Quality of Life Indicator (IMCV)"). The MQLI (IMCV in Spanish) is an experimental indicator developed by Spain's National Institute for Statistics (INE) built from 60 specific indicators grouped in nine dimensions, offering a broad perspective of the quality of life in Spain.
+
+## Trabajo futuro
+Algunas cosas que nos gustaría considerar, por orden de prioridad:
+
+- Añadir **más frases analíticas basadas en datos** (de las subdimensiones) a las páginas de cada comunidad autónoma.
+- Probar visualizaciones de **tendencias** alternativas.
+- Crear **diferentes formas para los pétalos** basadas en la diferencia positiva o negativa respecto a la media a la Film Flowers (de Shirley Wu) para resaltar la diferencia entre flores.
+- Mejorar la usabilidad y la experiencia.
+
+## 🤝 Contribución
+**La visualización puede revolucionar la difusión de los datos abiertos y revitalizar la transparencia**. Si queréis colaborar con nosotros, o vuestra empresa u organización quiere patrocinar la iniciativa, o queréis apoyar nuestra misión de otra forma, poneos en contacto con karma@fundaciovit.org.
