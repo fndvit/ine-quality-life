@@ -310,4 +310,10 @@ ${smallCharts("dim9")}
     font-size: .9rem;
     padding-left: .1rem;
   }
+
+  @media(max-width: 768px) {
+    .small-charts {
+      max-height: 12rem;
+    }
+  }
 </style>
