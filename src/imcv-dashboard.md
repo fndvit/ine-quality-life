@@ -15,8 +15,8 @@ import {tilemap} from "./components/tileMap.js";
 
 //if not here not working
 const data = await FileAttachment("data/imcv.json").json();
-const imcvKey = await FileAttachment("data/images/IMCVKey.png").image();
 const dataDetail = await FileAttachment("data/imcv-detail.json").json();
+const svgText = await FileAttachment("data/images/IMCVKey.svg").text();
 
 const yearInput = Inputs.range(d3.extent(imcv.map((d) => d.year)), {
     label: "Selecciona el año",
@@ -28,6 +28,12 @@ const year = Generators.input(yearInput);
 
 const ccaaInput = filterLegend(ccaaList.filter(d => d !== "Total"), ccaaColors.filter(d =>  d !== "#797974"))
 const ccaa = Generators.input(ccaaInput);
+```
+
+```js
+const document2 = (new DOMParser).parseFromString(svgText, "image/svg+xml");
+const svg = d3.select(document2.documentElement).remove();
+const image = svg.node();
 ```
 
 ```js
@@ -210,7 +216,7 @@ for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
   </div>
 
   <div class="card image-chart" >
-    <img src="data/images/IMCVKey.png" alt="IMCV Legend">
+    ${image}
   </div>
 
   <div class="weights-chart card">
@@ -304,11 +310,10 @@ for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
     justify-self:end;
   }
 
-  .image-chart img {
+  .image-chart svg {
     width: 100%;
     height: auto;
-    max-width: 700px;
-    image-rendering: auto;
+    max-width: 700px; 
   }
 
   .map {
