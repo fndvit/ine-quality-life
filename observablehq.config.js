@@ -1,16 +1,38 @@
+const ccaaPages = [
+  {path:"/ccaa/an", name:"Andalucía"},
+  {path:"/ccaa/ar", name:"Aragón"},
+  {path:"/ccaa/as", name:"Asturias"},
+  {path:"/ccaa/ib", name:"Baleares"},
+  {path:"/ccaa/cn", name:"Canarias"},
+  {path:"/ccaa/cb", name:"Cantabria"},
+  {path:"/ccaa/cl", name:"Castilla y León"},
+  {path:"/ccaa/cm", name:"Castilla-La Mancha"},
+  {path:"/ccaa/ct", name:"Cataluña"},
+  {path:"/ccaa/vc", name:"Comunitat Valenciana"},
+  {path:"/ccaa/ex", name:"Extremadura"},
+  {path:"/ccaa/ga", name:"Galicia"},
+  {path:"/ccaa/md", name:"Madrid"},
+  {path:"/ccaa/mc", name:"Murcia"},
+  {path:"/ccaa/nc", name:"Navarra"},
+  {path:"/ccaa/pv", name:"País Vasco"},
+  {path:"/ccaa/ri", name:"La Rioja"},
+  {path:"/ccaa/ce", name:"Ceuta"},
+  {path:"/ccaa/ml", name:"Melilla"}
+];
+
 export default {
-  title: "Índice de Calidad de Vida (INE)",
+  title: "Indicador Multidimensional de Calidad de Vida (INE)",
   head: `
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Índice de Calidad de Vida (INE)</title>
+  <title>Indicador Multidimensional de Calidad de Vida (INE)</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta name="author" content="Fundació ViT, Visualització per a la Transparència">
   <meta property="og:title" content="">
   <meta property="og:description" content="">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://imcv-ine.fndvit.org/">
+  <meta property="og:url" content="https://imcv.fndvit.org/">
   <meta property="og:image" content="/docs/img/social.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="">
@@ -26,12 +48,15 @@ export default {
     <link rel="stylesheet" href="https://use.typekit.net/vpz4xzt.css" />
   </noscript>
   `,
-  search: true,
+  search: false,
+  dynamicPaths: ccaaPages.map(d=>d.path),
   pages: [
     {name: "El indicador", path: "/imcv-dashboard"},
     {name: "Cómo (y por qué) lo rehicimos", path: "/making-of"},
     {name: "Descarga los datos", path: "/data"},
+    {name: "La calidad de vida por CC.AA.", open: true, pages: ccaaPages},
   ],
+
   header:`<style>
 
   #observablehq-header .logo {
@@ -72,7 +97,7 @@ export default {
           <img alt="VIT Logo" style="height: 30px; margin-right: 10px;" src="https://images.squarespace-cdn.com/content/v1/5e5b7eebeb83b746b6481a2d/1604671720103-EPJSELDNWVIPCWI63H7G/ke17ZwdGBToddI8pDm48kNCIUUInZz-JelovUC4TKJ9Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpy2nmdcYIRqEQwGN8P7xrL_yE-hs8s0G614KmYuoTh2b5xIcJ7iebeF3-4wt8VfJy4/favicon.ico?format=100w" >
         </a>
         <a href="" target="_self" rel="">
-        Índice de Calidad de Vida (INE)
+        Indicador Multidimensional de Calidad de Vida (INE)
         </a>
       </b>
       <span style="display: flex; align-items: baseline; gap: 0.5rem; font-size: 13px;">
@@ -85,16 +110,7 @@ export default {
   </div>`,
   root: "src",
   style:"style.css",
-  // Some additional configuration options and their defaults:
-  // theme: "default", // try "light", "dark", "slate", etc.
-  // footer: "Built with Observable.", // what to show in the footer (HTML)
-  // sidebar: true, // whether to show the sidebar
-  // toc: true, // whether to show the table of contents
-  // pager: true, // whether to show previous & next links in the footer
-  // output: "dist", // path to the output root for build
-  // search: true, // activate search
-  // linkify: true, // convert URLs in Markdown to links
-  typographer: true, // smart quotes and other typographic improvements
   footer: '',
-  cleanUrls: false
+  cleanUrls: false,
+  toc: {show: true, label:'Contenido'}
 };

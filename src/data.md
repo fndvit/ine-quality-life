@@ -7,6 +7,7 @@ toc: true
 import {data as imcv, ccaaList, ccaaColors, ccaaNameDict, dimList, dimDict, yearTexts} from "./data/consts.js";
 
 const data = await FileAttachment("data/imcv.json").json();
+const dataDetail = await FileAttachment("data/imcv-detail.json").json();
 
 const selectDate = Inputs.select(d3.range(2008, 2023), {multiple: 4, value: d3.range(2008, 2023), label: "Selecciona los años", format: d=> d.toFixed(0)});
 const selectCCAA = Inputs.select(ccaaList, {multiple: 4, value:ccaaList, label: "Selecciona las comunidades autónomas", format: d=> ccaaNameDict[d]});
@@ -89,7 +90,7 @@ En esta sección puedes **filtrar los datos** que visualizamos en el [panel](imc
 ${filterInput}
 ${resetFiltersButton}
 
-Estos son **los datos que has seleccionado**. La estructura de la tabla es *[apilada](https://en.wikipedia.org/wiki/Wide_and_narrow_data)*, ciertamente menos legible para los humanos, pero más práctica para trabajar programáticamente.
+Estos son **los datos que has seleccionado**. La estructura de la tabla es [*apilada*](https://en.wikipedia.org/wiki/Wide_and_narrow_data), ciertamente menos legible para los humanos, pero más práctica para trabajar programáticamente.
 
 <div class="grid">
 ${table}
