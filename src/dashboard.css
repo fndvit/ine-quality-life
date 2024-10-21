@@ -80,6 +80,11 @@ p {
   line-height: 1.75rem;
 }
 
+main li {
+  font-size: 1rem;
+  line-height: 1.75rem;
+}
+
 .sticky {
   position: sticky;
   top: 1rem;
@@ -133,7 +138,6 @@ input[type='checkbox'] {
     fill-opacity: .9;
     filter: drop-shadow(0 .1rem .4rem rgba(0,0,0,.18));
   }
-
 }
 
 #observablehq-main, #observablehq-header, #observablehq-footer {
@@ -204,4 +208,31 @@ input[type='checkbox'] {
     margin: -1rem;
     top: 0;
   }
+}
+
+.figure-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2%;
+  width: 100%;
+}
+
+.figure-container figure {
+  width: 100%;
+  height: 100%; 
+}
+
+.figure-container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px; 
+}
+
+.figure-container figcaption { 
+  margin-top: 2%;
+}
+
+figure {
+  max-width: 1200px;
 }
