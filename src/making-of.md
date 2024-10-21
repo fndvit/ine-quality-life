@@ -96,7 +96,7 @@ Este de aquí abajo es uno de la docena de mosaicos que diseñamos para el [*Air
 
 <div class="figure-container">
   <figure>
-    <script async src='https://www.unep.org/interactives/air-pollution-note/embed.js' data-embed='policies'></script>
+    <img src="img/mosaico.PNG" alt="Visualizacion mundial mosaico" />
     <figcaption>Mosaico que diseñamos para el Air Pollution Note del Programa de las Naciones Unidas para el Medio Ambiente (UNEP).</figcaption>
   </figure>
 </div>
