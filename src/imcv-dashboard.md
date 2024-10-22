@@ -66,7 +66,7 @@ const weights = Generators.input(weightsInput);
 ```
 
 ```js
-const isSimpleCheckbox = Inputs.radio([true, false], {label: "Show", value: false, format: (x) => x === true ? "Vista simple" : "Vista completa"});
+const isSimpleCheckbox = Inputs.radio([true, false], {label: "Muestra el gráfico", value: false, format: (x) => x === true ? "Simplificado" : "Detallado"});
 
 const isSimple = Generators.input(isSimpleCheckbox);
 ```
@@ -206,8 +206,8 @@ for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
 
 <div class="grid grid-chart-weight">
   <div class="header">
-    <h2>Personaliza tu Índice de Calidad de Vida</h2>
-    <p>Este gráfico muestra el ranking, de mayor a menor, de comunidades autónomas en cuanto al IMCV. Al interactuar con los sliders podemos modificar, según nuestras prioridades, el peso que queremos darle a las dimensiones que forman el índice, y observar cómo afecta a la puntuación de cada comunidad autónoma. Con la 'Vista completa' activada, al modificar el peso de una dimensión, podemos ver la distancia a la que se encuentra del índice personalizado y, por lo tanto, cuánto más 'tira' de él. </p>
+    <h2>Personaliza tu Indicador de Calidad de Vida</h2>
+    <p>En este gráfico puedes ajustar el peso de cada dimensión del índice según tus preferencias, y ver cómo influye en la valoración de la calidad de vida de cada comunidad autónoma.</p>
   </div>
   
   <div class="sticky menu menu-dimensiones">
@@ -224,33 +224,6 @@ for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
     ${customIndexChart(imcv, customAmpi, dimensionDiffs, clickedSlider, year, 700, isSimple)} 
   </div>
 </div>
-
-
-<!--div class="grid grid-custom-index">
-  <div  class="header">
-    <h2>TK TK Interactivo lorem ipsum título</h2>
-    <p> Interacciona con los sliders para customizar el IMCV según tus prioridades. Explora cómo afecta a la puntuación de cada C.A. </p>
-  </div>
-
-  <div class="card">
-      ${imcvKey}
-  </div>
-
-  <div class="sticky menu">
-    ${weightsInput}
-    ${isSimpleCheckbox}
-  </div>
-
-  <div class="chart card" style="display:flex">
-    <div style="flex:1"> 
-      ${slopeChart(slopePositions, 800)}
-    </div>
-    <div style="flex:7"> 
-      ${customIndexChart(imcv, customAmpi, dimensionDiffs, clickedSlider, year, 800, isSimple)} 
-    </div>
-  </div>
-</div-->
-
 
 <style>
 
@@ -379,8 +352,6 @@ for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
       height: 300px;
     }
 
-    
-  }
 
   @media (max-width: 850px) {
     .weight-inputs {

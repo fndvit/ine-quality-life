@@ -1,10 +1,7 @@
 import * as Plot from "npm:@observablehq/plot";
-import {
-  resize
-} from "npm:@observablehq/stdlib";
-import {
-  customIndexColors
-} from "../data/consts.js";
+import { resize } from "npm:@observablehq/stdlib";
+import { customIndexColors } from "../data/consts.js";
+import { ccaaNameDict } from "../data/consts.js";
 
 export function customIndexChart(imcv, customAmpi, dimensionDiffs, clickedSlider, year, height, simple) {
   return resize((width) =>
@@ -164,7 +161,7 @@ export function customIndexChart(imcv, customAmpi, dimensionDiffs, clickedSlider
         Plot.text(customAmpi, {
           x: 80,
           y: "ccaa",
-          text: "ccaa",
+          text: (d) => ccaaNameDict[d.ccaa],
           textAnchor: "start",
           dx: 4,
           fontSize: 13
