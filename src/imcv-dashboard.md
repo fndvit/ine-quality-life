@@ -211,8 +211,9 @@ for (const [key, entries] of Object.entries(groupedByYearAndRegion)) {
   </div>
   
   <div class="sticky menu menu-dimensiones">
-    ${weightsInput}
     ${isSimpleCheckbox}
+    <hr style="margin-top:-5px; margin-bottom:-5px;">
+    ${weightsInput}
   </div>
 
   <div class="card image-chart" >
