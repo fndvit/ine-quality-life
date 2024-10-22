@@ -1,53 +1,89 @@
-# INE Quality of Life Index
+# Remake del 'Índice Multidimensional de Calidad de Vida' del INE
 
-This is an [Observable Framework](https://observablehq.com/framework) app. To start the local preview server, run:
+![Panel Screenshot](inescreengrab.png)
+
+
+Este panel de datos reimagina la visualización del[ Indicador Multidimensional de Calidad de Vida (IMCV)](https://www.ine.es/experimental/imcv/experimental_ind_multi_calidad_vida.htm " Indicador Multidimensional de Calidad de Vida (IMCV)"). El IMCV es un indicador experimental desarrollado por el Instituto Nacional de Estadística (INE) de España, compuesto por 60 indicadores específicos agrupados en nueve dimensiones, que ofrece una perspectiva amplia sobre la calidad de vida en España.
+
+>**Importante**: no hemos desarrollado este indicador, pertenece al INE. Solo hemos reimaginado aspectos de su presentación visual y las tecnologías utilizadas en su difusión. Para más información sobre el proyecto original:
+
+- [Detalles y cálculo en cada dimensión del indicador](https://www.ine.es/experimental/imcv/exp_calidad_vida_multi.pdf "Detalles y cálculo en cada dimensión del indicador").
+- [Informe de metodología estandarizada](https://www.ine.es/dynt3/metadatos/es/RespuestaDatos.htm?oe=30471 "Informe de metodología estandarizada").
+- [El panel de datos original](https://public.tableau.com/views/IMCV_ccaaES/Dashboard2?:showVizHome=no&:embed=true#3 "El panel de datos original").
+
+
+## Construido con
+En nuestra propuesta, celebramos el uso de datos abiertos obtenidos del INE y, al igual que en nuestra iniciativa [Catalunya en Dades](https://catalunya-en-dades.fndvit.org/  "Catalunya en Dades"), utilizamos [Observable Framework](https://github.com/observablehq/framework "Observable Framework"), un generador de sitios estáticos gratuito y de código abierto para aplicaciones de datos, en lugar de productos de software comerciales como Tableau (la herramienta usada por el INE en este caso) o Power BI (la herramienta usada por la administración catalana).
+
+## Sitio web
+[Indicador Multidimensional de Calidad de Vida (INE)](https://ine-quality-life.vercel.app/)
+
+### Cómo empezar
+
+Esta aplicación es un proyecto de [*Observable Framework*](https://observablehq.com/framework). Para iniciar el servidor local y verla, ejecuta:
 
 ```
 npm run dev
 ```
 
-Then visit <http://localhost:3000> to preview your app.
+Luego, visita <http://localhost:3000> para previsualizar tu aplicación.
 
-For more, see <https://observablehq.com/framework/getting-started>.
+Para más información, consulta <https://observablehq.com/framework/getting-started>.
 
-## Project structure
-
-A typical Framework project looks like this:
+## Estructura del proyecto
 
 ```ini
 .
 ├─ src
 │  ├─ components
-│  │  └─ timeline.js           # an importable module
+│  │  └─ filterLegend.js       # la legenda interactiva
+│  │  └─ flowerChart.js        # los gráficos de las flores
+│  │  └─ lineChart.js          # los gráficos de línea
+│  │  └─ tileMap.js            # el mosaico
 │  ├─ data
-│  │  ├─ launches.csv.js       # a data loader
-│  │  └─ events.json           # a static data file
-│  ├─ example-dashboard.md     # a page
-│  ├─ example-report.md        # another page
-│  └─ index.md                 # the home page
+│  │  ├─ consts.js             # funciones auxiliares y diccionarios
+│  │  └─ imcv.json             # los datos del indicador
+│  ├─ imcv-dashboard.md        # panel de datos del indicador
+│  ├─ making-of.md             # post sobre cómo hicimos el panel
+│  ├─ data.md                  # descarga los datos
+│  └─ index.md                 # la página principal
 ├─ .gitignore
-├─ observablehq.config.js      # the app config file
+├─ observablehq.config.js      # el archivo de configuración de la app
 ├─ package.json
 └─ README.md
 ```
 
-**`src`** - This is the “source root” — where your source files live. Pages go here. Each page is a Markdown file. Observable Framework uses [file-based routing](https://observablehq.com/framework/routing), which means that the name of the file controls where the page is served. You can create as many pages as you like. Use folders to organize your pages.
+**`src`** - Este es la carpeta principal donde están tus ficheros fuente. Las páginas van aquí. Cada página es un archivo de Markdown. *Observable Framework* usa [enrutamiento basado en archivos](https://observablehq.com/framework/routing), con lo que el nombre del archivo controla dónde se sirve la página. Puedes crear tantas páginas como desees. Usa carpetas para organizar tus páginas.
 
-**`src/index.md`** - This is the home page for your app. You can have as many additional pages as you’d like, but you should always have a home page, too.
+**`src/index.md`** - Esta es la página principal de la aplicación. Puedes tener tantas páginas adicionales como quieras, pero siempre debes tener también una página de inicio.
 
-**`src/data`** - You can put [data loaders](https://observablehq.com/framework/loaders) or static data files anywhere in your source root, but we recommend putting them here.
+**`src/data`** - Puedes poner [cargadores de datos](https://observablehq.com/framework/loaders) o archivos de datos estáticos en cualquier lugar de la carpeta principal, pero recomendamos colocarlos aquí.
 
-**`src/components`** - You can put shared [JavaScript modules](https://observablehq.com/framework/javascript/imports) anywhere in your source root, but we recommend putting them here. This helps you pull code out of Markdown files and into JavaScript modules, making it easier to reuse code across pages, write tests and run linters, and even share code with vanilla web applications.
+**`src/components`** - Puedes poner módulos compartidos de [JavaScript](https://observablehq.com/framework/javascript/imports) en cualquier parte de la carpeta, pero recomendamos colocarlos aquí. Esto te ayuda a separar el código de los archivos Markdown y pasarlo a módulos de JavaScript, lo que facilita la reutilización del código entre páginas, escribir pruebas y ejecutar linters, e incluso compartir código con aplicaciones web estándar.
 
-**`observablehq.config.js`** - This is the [app configuration](https://observablehq.com/framework/config) file, such as the pages and sections in the sidebar navigation, and the app’s title.
+**`observablehq.config.js`** - Este es el archivo de [configuración de la aplicación](https://observablehq.com/framework/config), donde se definen las páginas y secciones en la navegación lateral, así como el título de la aplicación.
 
-## Command reference
+### Referencia de comandos
 
-| Command           | Description                                              |
-| ----------------- | -------------------------------------------------------- |
-| `npm install`            | Install or reinstall dependencies                        |
-| `npm run dev`        | Start local preview server                               |
-| `npm run build`      | Build your static site, generating `./dist`              |
-| `npm run deploy`     | Deploy your app to Observable                            |
-| `npm run clean`      | Clear the local data loader cache                        |
-| `npm run observable` | Run commands like `observable help`                      |
+| Comando              | Descripción                                              |
+| -------------------- | -------------------------------------------------------- |
+| `npm install`        | Instalar o reinstalar dependencias                       |
+| `npm run dev`        | Iniciar el servidor de vista previa local                |
+| `npm run build`      | Construir tu sitio estático, generando `./dist`          |
+| `npm run deploy`     | Desplegar tu aplicación en Observable                    |
+| `npm run clean`      | Limpiar la caché local del cargador de datos             |
+| `npm run observable` | Ejecutar comandos como `observable help`                 |
+
+Cómo empezar
+This data dashboard reimagines the visualization of the [Multidimensional Quality of Life Indicator (MQLI )](https://www.ine.es/experimental/imcv/experimental_ind_multi_calidad_vida.htm "Multidimensional Quality of Life Indicator (IMCV)"). The MQLI (IMCV in Spanish) is an experimental indicator developed by Spain's National Institute for Statistics (INE) built from 60 specific indicators grouped in nine dimensions, offering a broad perspective of the quality of life in Spain.
+
+## Trabajo futuro
+Algunas cosas que nos gustaría considerar, por orden de prioridad:
+
+- Añadir **más frases analíticas basadas en datos** (de las subdimensiones) a las páginas de cada comunidad autónoma.
+- Probar visualizaciones de **tendencias** alternativas.
+- Crear **diferentes formas para los pétalos** basadas en la diferencia positiva o negativa respecto a la media a la Film Flowers (de Shirley Wu) para resaltar la diferencia entre flores.
+- Mejorar la usabilidad y la experiencia.
+
+## 🤝 Contribución
+**La visualización puede revolucionar la difusión de los datos abiertos y revitalizar la transparencia**. Si queréis colaborar con nosotros, o vuestra empresa u organización quiere patrocinar la iniciativa, o queréis apoyar nuestra misión de otra forma, poneos en contacto con karma@fundaciovit.org.
