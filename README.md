@@ -16,7 +16,7 @@ Este panel de datos reimagina la visualización del[ Indicador Multidimensional 
 En nuestra propuesta, celebramos el uso de datos abiertos obtenidos del INE y, al igual que en nuestra iniciativa [Catalunya en Dades](https://catalunya-en-dades.fndvit.org/  "Catalunya en Dades"), utilizamos [Observable Framework](https://github.com/observablehq/framework "Observable Framework"), un generador de sitios estáticos gratuito y de código abierto para aplicaciones de datos, en lugar de productos de software comerciales como Tableau (la herramienta usada por el INE en este caso) o Power BI (la herramienta usada por la administración catalana).
 
 ## Sitio web
-[Indicador Multidimensional de Calidad de Vida (INE)](https://ine-quality-life.vercel.app/)
+[Indicador Multidimensional de Calidad de Vida (INE)](https://imcv.fndvit.org/)
 
 ### Cómo empezar
 
