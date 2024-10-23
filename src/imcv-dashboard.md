@@ -21,7 +21,7 @@ const svgText = await FileAttachment("data/images/IMCVKey.svg").text();
 const yearInput = Inputs.range(d3.extent(imcv.map((d) => d.year)), {
     label: "Selecciona el año",
     step: 1,
-    value: 2022
+    value: 2023
   });
 const year = Generators.input(yearInput);
 

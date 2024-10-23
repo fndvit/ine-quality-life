@@ -146,12 +146,12 @@ const compare = (ccaa, year) => {
 # La calidad de vida en ${ccaaName}
 
 <div class="grid grid-cols-3">
-<p class="grid-colspan-2">${compare(ccaa, 2022)}</p>
+<p class="grid-colspan-2">${compare(ccaa, 2023)}</p>
 <div class="card grid-colspan-1">${
       flowerChart(
         data,
         ccaa,
-        2022,
+        2023,
         "val", 
         "dim",
         width > 600 ? width / 7 : width / 3.5)
