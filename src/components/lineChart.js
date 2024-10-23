@@ -16,7 +16,7 @@ export function lineChart(data, ccaa, dim, width, height, x, y, stroke, page) {
         label: ""
       },
       y: {domain: yRange, label: "Valor"},
-      x: {tickFormat: "", label: "Año"},
+      x: {tickFormat: d => d.toString().replace(",", ""), label: "Año"},
       marks: [
         Plot.lineY(
           data.filter(i => i.dim === dim),

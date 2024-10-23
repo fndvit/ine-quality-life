@@ -19,12 +19,13 @@ export function customIndexChart(imcv, customAmpi, dimensionDiffs, clickedSlider
         ticks: [90, 100, 110],
         grid: true,
         axis: "both",
-        label: "Avg."
+        label: "Valor"
       },
       color: {
         type: "diverging",
         domain: [5, -5],
-        range: customIndexColors
+        range: customIndexColors,
+        label: "Diferencia"
       },
       marks: [
         Plot.ruleY(
@@ -133,7 +134,7 @@ export function customIndexChart(imcv, customAmpi, dimensionDiffs, clickedSlider
                 },
                 tip: {
                   format: {
-                    y: true,
+                    y: (d) => ccaaNameDict[d],
                     x: true,
                     fill: (d) => -(d / 2).toFixed(1)
                   }
