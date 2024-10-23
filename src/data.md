@@ -9,7 +9,7 @@ import {data as imcv, ccaaList, ccaaColors, ccaaNameDict, dimList, dimDict, year
 const data = await FileAttachment("data/imcv.json").json();
 const dataDetail = await FileAttachment("data/imcv-detail.json").json();
 
-const selectDate = Inputs.select(d3.range(2008, 2023), {multiple: 4, value: d3.range(2008, 2023), label: "Selecciona los años", format: d=> d.toFixed(0)});
+const selectDate = Inputs.select(d3.range(2008, 2024), {multiple: 4, value: d3.range(2008, 2024), label: "Selecciona los años", format: d=> d.toFixed(0)});
 const selectCCAA = Inputs.select(ccaaList, {multiple: 4, value:ccaaList, label: "Selecciona las comunidades autónomas", format: d=> ccaaNameDict[d]});
 const selectDim = Inputs.select([...dimList, "index"], {multiple: 4, value:[...dimList, "index"], label: "Selecciona las dimensiones", format: d=> dimDict[d]});
 
@@ -22,7 +22,7 @@ const resetFiltersButton = Inputs.button("Limipar filtros",
   { 
     value: null, 
     reduce: (value) => {
-      set(selectDate, d3.range(2008, 2023));
+      set(selectDate, d3.range(2008, 2024));
       set(selectCCAA, ccaaList);             
       set(selectDim, [...dimList, "index"]); 
     } 
